@@ -1,4 +1,4 @@
-package stockrepo
+package model_repo
 
 import (
 	"database/sql"
