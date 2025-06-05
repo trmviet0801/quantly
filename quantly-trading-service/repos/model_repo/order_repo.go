@@ -3,6 +3,7 @@ package model_repo
 import (
 	"database/sql"
 	"errors"
+	"strconv"
 
 	"github.com/trmviet0801/quantly/models"
 )
@@ -53,7 +54,7 @@ func (orderRepo *OrderRepo) GetById(orderId int64) (*models.Order, error) {
 	)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			return nil, errors.New("order not found with ID: " + string(orderId))
+			return nil, errors.New("order not found with ID: " + strconv.FormatInt(orderId, 10))
 		}
 	}
 	return order, nil
