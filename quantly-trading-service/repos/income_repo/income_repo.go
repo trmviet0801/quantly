@@ -1,0 +1,326 @@
+package incomerepo
+
+import (
+	"database/sql"
+	"errors"
+
+	"github.com/trmviet0801/quantly/models"
+)
+
+type IncomeRepo struct {
+	db *sql.DB
+}
+
+func (incomeRepo *IncomeRepo) GetById(stockSymbol string) (income *models.Income, err error) {
+	query := `
+	SELECT 
+    stock_symbol,
+    total_revenue,
+    operating_revenue,
+    cost_of_revenue,
+    gross_profit,
+    operating_expense,
+    selling_general_and_administrative,
+    research_and_development,
+    operating_income,
+    net_non_operating_interest_income_expense,
+    interest_income_non_operating,
+    interest_expense_non_operating,
+    other_income_expense_net,
+    special_income_charges,
+    restructuring_and_merger_acquisition,
+    other_non_operating_income_expense,
+    pre_tax_income,
+	tax_provision,
+    net_income_common_stockholders,
+    net_income,
+    net_income_including_non_controlling_interest,
+    net_income_continuous_operations,
+    diluted_nia_available_to_common_stockholders,
+    basic_eps,
+    diluted_eps,
+    basic_average_shares,
+    diluted_averageshares,
+    total_operating_income_as_reported,
+    total_expenses,
+    net_income_from_continuing_and_discontinued_operation,
+    normalized_income,
+    interest_income,
+    interest_expense,
+    net_interest_income,
+    ebit,
+    ebitda,
+    reconciled_cost_of_revenue,
+    reconciled_depreciation,
+    net_income_from_continuing_operation_net_minority_interest,
+    total_unusual_items_excluding_goodwill,
+    total_unusual_items,
+    normalized_ebitda,
+    tax_rate_for_calcs,
+    tax_effect_of_unusual_items
+FROM incomes
+WHERE stock_symbol = ?;`
+
+	income = &models.Income{}
+	err = incomeRepo.db.QueryRow(query, stockSymbol).Scan(
+		&income.StockSymbol,
+		&income.TotalRevenue,
+		&income.OperatingRevenue,
+		&income.CostOfRevenue,
+		&income.GrossProfit,
+		&income.OperatingExpense,
+		&income.SellingGeneralAndAdministrative,
+		&income.ResearchAndDevelopment,
+		&income.OperatingIncome,
+		&income.NetNonOperatingInterestIncomeExpense,
+		&income.InterestIncomeNonOperating,
+		&income.InterestExpenseNonOperating,
+		&income.OtherIncomeExpenseNet,
+		&income.SpecialIncomeCharges,
+		&income.RestructuringAndMergerAcquisition,
+		&income.OtherNonOperatingIncomeExpense,
+		&income.PreTaxIncome,
+		&income.TaxProvision,
+		&income.NetIncomeCommonStockholders,
+		&income.NetIncome,
+		&income.NetIncomeIncludingNonControllingInterest,
+		&income.NetIncomeContinuousOperations,
+		&income.DilutedNiAvailableToCommonStockholders,
+		&income.BasicEps,
+		&income.DilutedEps,
+		&income.BasicAverageShares,
+		&income.DilutedAverageshares,
+		&income.TotalOperatingIncomeAsReported,
+		&income.TotalExpenses,
+		&income.NetIncomeFromContinuingAndDiscontinuedOperation,
+		&income.NormalizedIncome,
+		&income.InterestIncome,
+		&income.InterestExpense,
+		&income.NetInterestIncome,
+		&income.Ebit,
+		&income.Ebitda,
+		&income.ReconciledCostOfRevenue,
+		&income.ReconciledDepreciation,
+		&income.NetIncomeFromContinuingOperationNetMinorityInterest,
+		&income.TotalUnusualItemsExcludingGoodwill,
+		&income.TotalUnusualItems,
+		&income.NormalizedEbitda,
+		&income.TaxRateForCalcs,
+		&income.TaxEffectOfUnusualItems,
+	)
+	if err != nil {
+		return nil, errors.New("income not found")
+	}
+	return income, nil
+}
+
+func (incomeRepo *IncomeRepo) Create(income *models.Income) error {
+	query := `
+	INSERT INTO incomes (
+    stock_symbol,
+    total_revenue,
+    operating_revenue,
+    cost_of_revenue,
+    gross_profit,
+    operating_expense,
+    selling_general_and_administrative,
+    research_and_development,
+    operating_income,
+    net_non_operating_interest_income_expense,
+    interest_income_non_operating,
+    interest_expense_non_operating,
+    other_income_expense_net,
+    special_income_charges,
+    restructuring_and_merger_acquisition,
+    other_non_operating_income_expense,
+    pre_tax_income,
+    tax_provision,
+    net_income_common_stockholders,
+    net_income,
+    net_income_including_non_controlling_interest,
+    net_income_continuous_operations,
+    diluted_nia_available_to_common_stockholders,
+    basic_eps,
+    diluted_eps,
+    basic_average_shares,
+    diluted_averageshares,
+    total_operating_income_as_reported,
+    total_expenses,
+    net_income_from_continuing_and_discontinued_operation,
+    normalized_income,
+    interest_income,
+    interest_expense,
+    net_interest_income,
+    ebit,
+    ebitda,
+    reconciled_cost_of_revenue,
+    reconciled_depreciation,
+    net_income_from_continuing_operation_net_minority_interest,
+    total_unusual_items_excluding_goodwill,
+    total_unusual_items,
+    normalized_ebitda,
+    tax_rate_for_calcs,
+    tax_effect_of_unusual_items
+) VALUES (
+    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+);
+`
+	_, err := incomeRepo.db.Exec(query,
+		income.StockSymbol,
+		income.TotalRevenue,
+		income.OperatingRevenue,
+		income.CostOfRevenue,
+		income.GrossProfit,
+		income.OperatingExpense,
+		income.SellingGeneralAndAdministrative,
+		income.ResearchAndDevelopment,
+		income.OperatingIncome,
+		income.NetNonOperatingInterestIncomeExpense,
+		income.InterestIncomeNonOperating,
+		income.InterestExpenseNonOperating,
+		income.OtherIncomeExpenseNet,
+		income.SpecialIncomeCharges,
+		income.RestructuringAndMergerAcquisition,
+		income.OtherNonOperatingIncomeExpense,
+		income.PreTaxIncome,
+		income.TaxProvision,
+		income.NetIncomeCommonStockholders,
+		income.NetIncome,
+		income.NetIncomeIncludingNonControllingInterest,
+		income.NetIncomeContinuousOperations,
+		income.DilutedNiAvailableToCommonStockholders,
+		income.BasicEps,
+		income.DilutedEps,
+		income.BasicAverageShares,
+		income.DilutedAverageshares,
+		income.TotalOperatingIncomeAsReported,
+		income.TotalExpenses,
+		income.NetIncomeFromContinuingAndDiscontinuedOperation,
+		income.NormalizedIncome,
+		income.InterestIncome,
+		income.InterestExpense,
+		income.NetInterestIncome,
+		income.Ebit,
+		income.Ebitda,
+		income.ReconciledCostOfRevenue,
+		income.ReconciledDepreciation,
+		income.NetIncomeFromContinuingOperationNetMinorityInterest,
+		income.TotalUnusualItemsExcludingGoodwill,
+		income.TotalUnusualItems,
+		income.NormalizedEbitda,
+		income.TaxRateForCalcs,
+		income.TaxEffectOfUnusualItems,
+	)
+	if err != nil {
+		return errors.New("failed to create income")
+	}
+	return nil
+}
+
+func (incomeRepo *IncomeRepo) Update(income *models.Income) error {
+	query := `
+	UPDATE incomes SET
+    total_revenue = ?,
+    operating_revenue = ?,
+    cost_of_revenue = ?,
+    gross_profit = ?,
+    operating_expense = ?,
+    selling_general_and_administrative = ?,
+    research_and_development = ?,
+    operating_income = ?,
+    net_non_operating_interest_income_expense = ?,
+    interest_income_non_operating = ?,
+    interest_expense_non_operating = ?,
+    other_income_expense_net = ?,
+    special_income_charges = ?,
+    restructuring_and_merger_acquisition = ?,
+    other_non_operating_income_expense = ?,
+    pre_tax_income = ?,
+    tax_provision = ?,
+    net_income_common_stockholders = ?,
+    net_income = ?,
+    net_income_including_non_controlling_interest = ?,
+    net_income_continuous_operations = ?,
+    diluted_nia_available_to_common_stockholders = ?,
+    basic_eps = ?,
+    diluted_eps = ?,
+    basic_average_shares = ?,
+    diluted_averageshares = ?,
+    total_operating_income_as_reported = ?,
+    total_expenses = ?,
+    net_income_from_continuing_and_discontinued_operation = ?,
+    normalized_income = ?,
+    interest_income = ?,
+    interest_expense = ?,
+    net_interest_income = ?,
+    ebit = ?,
+    ebitda = ?,
+    reconciled_cost_of_revenue = ?,
+    reconciled_depreciation = ?,
+    net_income_from_continuing_operation_net_minority_interest = ?,
+    total_unusual_items_excluding_goodwill = ?,
+    total_unusual_items = ?,
+    normalized_ebitda = ?,
+    tax_rate_for_calcs = ?,
+    tax_effect_of_unusual_items = ?
+WHERE stock_symbol = ?;`
+	_, err := incomeRepo.db.Exec(query,
+		income.TotalRevenue,
+		income.OperatingRevenue,
+		income.CostOfRevenue,
+		income.GrossProfit,
+		income.OperatingExpense,
+		income.SellingGeneralAndAdministrative,
+		income.ResearchAndDevelopment,
+		income.OperatingIncome,
+		income.NetNonOperatingInterestIncomeExpense,
+		income.InterestIncomeNonOperating,
+		income.InterestExpenseNonOperating,
+		income.OtherIncomeExpenseNet,
+		income.SpecialIncomeCharges,
+		income.RestructuringAndMergerAcquisition,
+		income.OtherNonOperatingIncomeExpense,
+		income.PreTaxIncome,
+		income.TaxProvision,
+		income.NetIncomeCommonStockholders,
+		income.NetIncome,
+		income.NetIncomeIncludingNonControllingInterest,
+		income.NetIncomeContinuousOperations,
+		income.DilutedNiAvailableToCommonStockholders,
+		income.BasicEps,
+		income.DilutedEps,
+		income.BasicAverageShares,
+		income.DilutedAverageshares,
+		income.TotalOperatingIncomeAsReported,
+		income.TotalExpenses,
+		income.NetIncomeFromContinuingAndDiscontinuedOperation,
+		income.NormalizedIncome,
+		income.InterestIncome,
+		income.InterestExpense,
+		income.NetInterestIncome,
+		income.Ebit,
+		income.Ebitda,
+		income.ReconciledCostOfRevenue,
+		income.ReconciledDepreciation,
+		income.NetIncomeFromContinuingOperationNetMinorityInterest,
+		income.TotalUnusualItemsExcludingGoodwill,
+		income.TotalUnusualItems,
+		income.NormalizedEbitda,
+		income.TaxRateForCalcs,
+		income.TaxEffectOfUnusualItems,
+		income.StockSymbol,
+	)
+	if err != nil {
+		return errors.New("failed to update income")
+	}
+	return nil
+}
+
+func (incomeRepo *IncomeRepo) Delete(stockSymbol string) error {
+	query := `DELETE FROM incomes WHERE stock_symbol = ?;`
+	_, err := incomeRepo.db.Exec(query, stockSymbol)
+	if err != nil {
+		return errors.New("failed to delete income")
+	}
+	return nil
+}
