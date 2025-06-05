@@ -12,9 +12,9 @@ type StockRepo struct {
 }
 
 func (stockRepo *StockRepo) GetById(id string) (stock *models.Stock, err error) {
-	query := `SELECT name, symbol, ipo_year, country, current_price, price_change, change_percent,
+	query := `SELECT name, stock_symbol, ipo_year, country, current_price, price_change, change_percent,
        open_price, day_range, day_low, day_high, volume, latest_trade_time, ticker,
-       exchange, industry, sector, employees, headquarters, market_cap, pe_ratio_ttm, eps_ttm FROM stocks WHERE symbol = ?`
+       exchange, industry, sector, employees, headquarters, market_cap, pe_ratio_ttm, eps_ttm FROM stocks WHERE stock_symbol = ?`
 	stock = &models.Stock{}
 	err = stockRepo.db.QueryRow(query, id).Scan(
 		&stock.Name,
@@ -47,7 +47,7 @@ func (stockRepo *StockRepo) GetById(id string) (stock *models.Stock, err error) 
 }
 
 func (stockRepo *StockRepo) Create(stock *models.Stock) error {
-	query := `INSERT INTO stocks (name, symbol, ipo_year, country, current_price, price_change, change_percent,
+	query := `INSERT INTO stocks (name, stock_symbol, ipo_year, country, current_price, price_change, change_percent,
 	   open_price, day_range, day_low, day_high, volume, latest_trade_time, ticker,
 	   exchange, industry, sector, employees, headquarters, market_cap, pe_ratio_ttm, eps_ttm)
 	   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
@@ -85,7 +85,7 @@ func (stockRepo *StockRepo) Update(stock *models.Stock) error {
 	query := `UPDATE stocks SET name = ?, ipo_year = ?, country = ?, current_price = ?, price_change = ?,
 	   change_percent = ?, open_price = ?, day_range = ?, day_low = ?, day_high = ?, volume = ?,
 	   latest_trade_time = ?, ticker = ?, exchange = ?, industry = ?, sector = ?, employees = ?,
-	   headquarters = ?, market_cap = ?, pe_ratio_ttm = ?, eps_ttm = ? WHERE symbol = ?`
+	   headquarters = ?, market_cap = ?, pe_ratio_ttm = ?, eps_ttm = ? WHERE stock_symbol = ?`
 	_, err := stockRepo.db.Exec(query,
 		stock.Name,
 		stock.IpoYear,
@@ -116,7 +116,7 @@ func (stockRepo *StockRepo) Update(stock *models.Stock) error {
 }
 
 func (stockRepo *StockRepo) DeleteById(id string) error {
-	query := `DELETE FROM stocks WHERE symbol = ?`
+	query := `DELETE FROM stocks WHERE stock_symbol = ?`
 	_, err := stockRepo.db.Exec(query, id)
 	if err != nil {
 		return errors.New("failed to delete stock")

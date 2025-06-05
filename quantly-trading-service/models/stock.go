@@ -2,7 +2,7 @@ package models
 
 type Stock struct {
 	Name            string  `binding:"required" json:"name"`
-	Symbol          string  `binding:"required" json:"symbol"`
+	Symbol          string  `binding:"required" json:"stock_symbol"`
 	IpoYear         int16   `json:"ipo_year"`
 	Country         string  `binding:"required" json:"country"`
 	CurrentPrice    float64 `json:"current_price"`
