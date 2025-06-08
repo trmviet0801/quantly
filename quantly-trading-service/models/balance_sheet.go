@@ -1,7 +1,7 @@
 package models
 
 type BalanceSheet struct {
-	StockSymbol                         string  `json:"stock_symbol"`
+	StockSymbol                         string  `json:"stock_symbol" gorm:"primaryKey"`
 	TotalAssets                         float64 `json:"total_assets"`
 	TotalLiabilitiesNetMinorityInterest float64 `json:"total_liabilities_net_minority_interest"`
 	TotalEquityGrossMinorityInterest    float64 `json:"total_equity_gross_minority_interest"`

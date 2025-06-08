@@ -1,7 +1,7 @@
 package models
 
 type Order struct {
-	OrderId       int64   `json:"order_id" binding:"required"`
+	OrderId       int64   `json:"order_id" binding:"required" gorm:"primaryKey"`
 	AccountId     int64   `json:"account_id" binding:"required"`
 	Symbol        string  `json:"symbol" binding:"required"`
 	Quantity      float64 `json:"qty" binding:"required"`

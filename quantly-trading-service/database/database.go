@@ -1,27 +1,25 @@
 package database
 
 import (
-	"database/sql"
 	"fmt"
 	"os"
 	"sync"
-	"time"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
-var Database *sql.DB
+var DB *gorm.DB
 var once sync.Once
 
-func GetDatabase() *sql.DB {
+func GetDatabase() *gorm.DB {
 	once.Do(func() {
 		err := godotenv.Load()
 		if err != nil {
-			panic("Can not get DB information")
+			panic("Cannot load environment variables")
 		}
-
-		databaseInformation := fmt.Sprintf(
+		dns := fmt.Sprintf(
 			"%v:%v@tcp(%v:%v)/%v",
 			os.Getenv("DB_USERNAME"),
 			os.Getenv("DB_PASSWORD"),
@@ -30,17 +28,10 @@ func GetDatabase() *sql.DB {
 			os.Getenv("DB_NAME"),
 		)
 
-		Database, err = sql.Open("mysql", databaseInformation)
+		DB, err = gorm.Open(mysql.Open(dns), &gorm.Config{})
 		if err != nil {
-			panic("Cannot open connection to database")
+			panic("Cannot connect to database: " + err.Error())
 		}
-
-		Database.SetConnMaxLifetime(time.Minute * 5)
-		Database.SetConnMaxIdleTime(time.Minute * 3)
-		Database.SetMaxOpenConns(10)
-		Database.SetMaxIdleConns(5)
-
-		fmt.Println("DATABASE CONNECTED SUCCESSFULLY")
 	})
-	return Database
+	return DB
 }

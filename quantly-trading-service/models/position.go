@@ -1,7 +1,7 @@
 package models
 
 type Position struct {
-	PositionId             int64   `json:"position_id"`
+	PositionId             int64   `json:"position_id" gorm:"primaryKey"`
 	AccountId              int64   `json:"account_id"`
 	AssetId                string  `json:"asset_id"`
 	Symbol                 string  `json:"symbol"`

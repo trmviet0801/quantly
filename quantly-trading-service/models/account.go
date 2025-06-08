@@ -6,7 +6,7 @@ import (
 )
 
 type Account struct {
-	AccountId              int64           `json:"account_id"`
+	AccountId              int64           `json:"account_id" gorm:"primaryKey"`
 	UserId                 int64           `binding:"required" json:"user_id"`
 	AccountNumber          string          `json:"account_number"`
 	Status                 string          `json:"status"`

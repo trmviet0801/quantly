@@ -1,7 +1,7 @@
 package models
 
 type Income struct {
-	StockSymbol                                         string  `binding:"required" json:"stock_symbol"`
+	StockSymbol                                         string  `gorm:"primaryKey" binding:"required" json:"stock_symbol"`
 	TotalRevenue                                        float64 `json:"total_revenue"`
 	OperatingRevenue                                    float64 `json:"operating_revenue"`
 	CostOfRevenue                                       float64 `json:"cost_of_revenue"`
