@@ -7,12 +7,12 @@ import (
 )
 
 type TradeSignalRepo struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
 func (r *TradeSignalRepo) GetById(tradeSignalId int64) (*models.TradeSignal, error) {
 	tradeSignal := &models.TradeSignal{}
-	if err := r.db.First(tradeSignal, "trade_signal_id = ?", tradeSignalId).Error; err != nil {
+	if err := r.DB.First(tradeSignal, "trade_signal_id = ?", tradeSignalId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get trade signal")
 	}
 
@@ -20,7 +20,7 @@ func (r *TradeSignalRepo) GetById(tradeSignalId int64) (*models.TradeSignal, err
 }
 
 func (r *TradeSignalRepo) Create(tradeSignal *models.TradeSignal) error {
-	err := r.db.Create(tradeSignal).Error
+	err := r.DB.Create(tradeSignal).Error
 	return utils.OnError(err, "can not create trade signal")
 }
 
@@ -28,11 +28,11 @@ func (r *TradeSignalRepo) Update(tradeSignal *models.TradeSignal) error {
 	if tradeSignal.TradeSignalId == 0 {
 		return gorm.ErrRecordNotFound
 	}
-	err := r.db.Save(tradeSignal).Error
+	err := r.DB.Save(tradeSignal).Error
 	return utils.OnError(err, "can not update trade signal")
 }
 
 func (r *TradeSignalRepo) DeleteById(tradeSignalId int64) error {
-	err := r.db.Where("trade_signal_id = ?", tradeSignalId).Delete(&models.TradeSignal{}).Error
+	err := r.DB.Where("trade_signal_id = ?", tradeSignalId).Delete(&models.TradeSignal{}).Error
 	return utils.OnError(err, "can not delete trade signal")
 }

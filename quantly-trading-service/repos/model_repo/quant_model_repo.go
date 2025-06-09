@@ -7,19 +7,19 @@ import (
 )
 
 type QuantModelRepo struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
 func (r *QuantModelRepo) GetById(quantModelId int64) (*models.QuantModel, error) {
 	quantModel := &models.QuantModel{}
-	if err := r.db.First(quantModel, "quant_model_id = ?", quantModelId).Error; err != nil {
+	if err := r.DB.First(quantModel, "quant_model_id = ?", quantModelId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get quant model")
 	}
 	return quantModel, nil
 }
 
 func (r *QuantModelRepo) Create(quantModel *models.QuantModel) error {
-	err := r.db.Create(quantModel).Error
+	err := r.DB.Create(quantModel).Error
 	return utils.OnError(err, "can not create quant model")
 }
 
@@ -28,10 +28,10 @@ func (r *QuantModelRepo) Update(quantModel *models.QuantModel) error {
 		return gorm.ErrRecordNotFound
 	}
 
-	err := r.db.Save(quantModel).Error
+	err := r.DB.Save(quantModel).Error
 	return utils.OnError(err, "can not update quant model")
 }
 func (r *QuantModelRepo) DeleteById(quantModelId int64) error {
-	err := r.db.Where("quant_model_id = ?", quantModelId).Delete(&models.QuantModel{}).Error
+	err := r.DB.Where("quant_model_id = ?", quantModelId).Delete(&models.QuantModel{}).Error
 	return utils.OnError(err, "can not delete quant model")
 }

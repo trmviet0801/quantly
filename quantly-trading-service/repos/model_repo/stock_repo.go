@@ -9,19 +9,19 @@ import (
 )
 
 type StockRepo struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
 func (r *StockRepo) GetById(stockSymbol string) (*models.Stock, error) {
 	stock := &models.Stock{}
-	if err := r.db.First(stock, "stock_symbol = ?", stockSymbol).Error; err != nil {
+	if err := r.DB.First(stock, "stock_symbol = ?", stockSymbol).Error; err != nil {
 		return nil, utils.OnError(err, "can not get stock")
 	}
 	return stock, nil
 }
 
 func (r *StockRepo) Create(stock *models.Stock) error {
-	err := r.db.Create(stock).Error
+	err := r.DB.Create(stock).Error
 	return utils.OnError(err, "can not create new stock")
 }
 
@@ -30,11 +30,11 @@ func (r *StockRepo) Update(stock *models.Stock) error {
 		return fmt.Errorf("can not update stock: invalid input")
 	}
 
-	err := r.db.Save(stock).Error
+	err := r.DB.Save(stock).Error
 	return utils.OnError(err, "can not update stock")
 }
 
 func (r *StockRepo) DeleteById(stockSymbol string) error {
-	err := r.db.Where("stock_symbol = ?", stockSymbol).Delete(&models.Stock{}).Error
+	err := r.DB.Where("stock_symbol = ?", stockSymbol).Delete(&models.Stock{}).Error
 	return utils.OnError(err, "can not delete stock")
 }

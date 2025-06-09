@@ -9,19 +9,19 @@ import (
 )
 
 type IncomeRepo struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
 func (r *IncomeRepo) GetById(stockSymbol string) (*models.Income, error) {
 	income := &models.Income{}
-	if err := r.db.First(income, "stock_symbol = ?", stockSymbol).Error; err != nil {
+	if err := r.DB.First(income, "stock_symbol = ?", stockSymbol).Error; err != nil {
 		return nil, utils.OnError(err, "can not find income")
 	}
 	return income, nil
 }
 
 func (r *IncomeRepo) Create(income *models.Income) error {
-	err := r.db.Create(income).Error
+	err := r.DB.Create(income).Error
 	return utils.OnError(err, "can not create income")
 }
 
@@ -30,11 +30,11 @@ func (r *IncomeRepo) Update(income *models.Income) error {
 		return fmt.Errorf("can not update income: input invalid")
 	}
 
-	err := r.db.Save(income).Error
+	err := r.DB.Save(income).Error
 	return utils.OnError(err, "can not update income")
 }
 
 func (r *IncomeRepo) DeleteById(stockSymbol string) error {
-	err := r.db.Where("stock_symbol = ?", stockSymbol).Delete(&models.Income{}).Error
+	err := r.DB.Where("stock_symbol = ?", stockSymbol).Delete(&models.Income{}).Error
 	return utils.OnError(err, "can not delete income")
 }

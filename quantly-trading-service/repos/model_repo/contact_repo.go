@@ -7,19 +7,19 @@ import (
 )
 
 type ContactRepo struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
 func (r *ContactRepo) GetById(contactId int64) (*models.Contact, error) {
 	contact := &models.Contact{}
-	if err := r.db.First(contact, "contact_id = ?", contactId).Error; err != nil {
+	if err := r.DB.First(contact, "contact_id = ?", contactId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get contact")
 	}
 	return contact, nil
 }
 
 func (r *ContactRepo) Create(contact *models.Contact) error {
-	err := r.db.Create(contact).Error
+	err := r.DB.Create(contact).Error
 	return utils.OnError(err, "can not create contact")
 }
 
@@ -28,12 +28,12 @@ func (r *ContactRepo) Update(contact *models.Contact) error {
 		return gorm.ErrRecordNotFound
 	}
 
-	err := r.db.Save(contact).Error
+	err := r.DB.Save(contact).Error
 	return utils.OnError(err, "can not update contact")
 
 }
 
 func (r *ContactRepo) DeleteById(contactId int64) error {
-	err := r.db.Where("contact_id = ?", contactId).Delete(&models.Contact{}).Error
+	err := r.DB.Where("contact_id = ?", contactId).Delete(&models.Contact{}).Error
 	return utils.OnError(err, "can not delete contact")
 }

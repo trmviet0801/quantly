@@ -9,19 +9,19 @@ import (
 )
 
 type DisclosureRepo struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
 func (r *DisclosureRepo) GetById(disclosureId int64) (*models.Disclosure, error) {
 	disclosure := &models.Disclosure{}
-	if err := r.db.First(disclosure, "disclosure_id = ?", disclosureId).Error; err != nil {
+	if err := r.DB.First(disclosure, "disclosure_id = ?", disclosureId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get disclosure")
 	}
 	return disclosure, nil
 }
 
 func (r *DisclosureRepo) Create(disclosure *models.Disclosure) error {
-	err := r.db.Create(disclosure).Error
+	err := r.DB.Create(disclosure).Error
 	return utils.OnError(err, "can not create disclosure")
 }
 
@@ -30,11 +30,11 @@ func (r *DisclosureRepo) Update(disclosure *models.Disclosure) error {
 		return fmt.Errorf("can not update disclosure: invalid input")
 	}
 
-	err := r.db.Save(disclosure).Error
+	err := r.DB.Save(disclosure).Error
 	return utils.OnError(err, "can not update disclosure")
 }
 
 func (r *DisclosureRepo) DeleteById(disclosureId int64) error {
-	err := r.db.Where("disclosureId = ?", disclosureId).Delete(&models.Disclosure{}).Error
+	err := r.DB.Where("disclosureId = ?", disclosureId).Delete(&models.Disclosure{}).Error
 	return utils.OnError(err, "can not delete disclosure")
 }

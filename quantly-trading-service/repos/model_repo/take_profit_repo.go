@@ -9,18 +9,18 @@ import (
 )
 
 type TakeProfitRepo struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
 func (r *TakeProfitRepo) GetById(takeProfitId string) (*models.TakeProfit, error) {
 	takeProfit := &models.TakeProfit{}
-	if err := r.db.First(takeProfit, "take_profit_id = ?", takeProfitId).Error; err != nil {
+	if err := r.DB.First(takeProfit, "take_profit_id = ?", takeProfitId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get take profit by id")
 	}
 	return takeProfit, nil
 }
 func (r *TakeProfitRepo) Create(takeProfit *models.TakeProfit) error {
-	err := r.db.Create(takeProfit).Error
+	err := r.DB.Create(takeProfit).Error
 	return utils.OnError(err, "can not create take profit")
 }
 func (r *TakeProfitRepo) Update(takeProfit *models.TakeProfit) error {
@@ -28,10 +28,10 @@ func (r *TakeProfitRepo) Update(takeProfit *models.TakeProfit) error {
 		return fmt.Errorf("can not update take profit: invalid input")
 	}
 
-	err := r.db.Save(takeProfit).Error
+	err := r.DB.Save(takeProfit).Error
 	return utils.OnError(err, "can not update take profit")
 }
 func (r *TakeProfitRepo) DeleteById(takeProfitId string) error {
-	err := r.db.Where("take_profit_id = ?", takeProfitId).Delete(&models.TakeProfit{}).Error
+	err := r.DB.Where("take_profit_id = ?", takeProfitId).Delete(&models.TakeProfit{}).Error
 	return utils.OnError(err, "can not delete take profit")
 }
