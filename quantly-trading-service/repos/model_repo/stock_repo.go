@@ -13,7 +13,7 @@ type StockRepo struct {
 }
 
 func (r *StockRepo) GetById(stockSymbol string) (*models.Stock, error) {
-	var stock *models.Stock
+	stock := &models.Stock{}
 	if err := r.db.First(stock, "stock_symbol = ?", stockSymbol).Error; err != nil {
 		return nil, utils.OnError(err, "can not get stock")
 	}

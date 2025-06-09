@@ -11,7 +11,7 @@ type TrustedContactRepo struct {
 }
 
 func (r *TrustedContactRepo) GetById(trustedContactId int64) (*models.TrustedContact, error) {
-	var trustedContact *models.TrustedContact
+	trustedContact := &models.TrustedContact{}
 	if err := r.db.First(trustedContact, "trusted_contact_id = ?", trustedContactId).Error; err != nil {
 		return nil, utils.OnError(err, "can not select trusted contact")
 	}

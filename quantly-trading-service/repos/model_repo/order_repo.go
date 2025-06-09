@@ -13,7 +13,7 @@ type OrderRepo struct {
 }
 
 func (r *OrderRepo) GetById(orderId string) (*models.Order, error) {
-	var order *models.Order
+	order := &models.Order{}
 	if err := r.db.First(order, "order_id = ?", orderId).Error; err != nil {
 		return nil, utils.OnError(err, "can not find order")
 	}

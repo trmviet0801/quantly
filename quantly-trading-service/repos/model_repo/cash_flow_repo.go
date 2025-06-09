@@ -13,7 +13,7 @@ type CashFlowRepo struct {
 }
 
 func (r *CashFlowRepo) GetById(stockSymbol string) (*models.CashFlow, error) {
-	var cashFlow *models.CashFlow
+	cashFlow := &models.CashFlow{}
 	if err := r.db.First(cashFlow, "stock_symbol = ?", stockSymbol).Error; err != nil {
 		return nil, utils.OnError(err, "can not get cash flow")
 	}

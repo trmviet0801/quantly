@@ -13,7 +13,7 @@ type TakeProfitRepo struct {
 }
 
 func (r *TakeProfitRepo) GetById(takeProfitId string) (*models.TakeProfit, error) {
-	var takeProfit *models.TakeProfit
+	takeProfit := &models.TakeProfit{}
 	if err := r.db.First(takeProfit, "take_profit_id = ?", takeProfitId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get take profit by id")
 	}

@@ -13,7 +13,7 @@ type DisclosureRepo struct {
 }
 
 func (r *DisclosureRepo) GetById(disclosureId int64) (*models.Disclosure, error) {
-	var disclosure *models.Disclosure
+	disclosure := &models.Disclosure{}
 	if err := r.db.First(disclosure, "disclosure_id = ?", disclosureId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get disclosure")
 	}

@@ -11,7 +11,7 @@ type PortfolioRepo struct {
 }
 
 func (r *PortfolioRepo) GetById(portfolioId int64) (*models.Portfolio, error) {
-	var portfolio *models.Portfolio
+	portfolio := &models.Portfolio{}
 	if err := r.db.First(portfolio, "portfolio_id = ?", portfolioId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get portfolio")
 	}

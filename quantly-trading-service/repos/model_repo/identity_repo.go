@@ -11,7 +11,7 @@ type IdentityRepo struct {
 }
 
 func (r *IdentityRepo) GetById(identityId int64) (*models.Identity, error) {
-	var identity *models.Identity
+	identity := &models.Identity{}
 	if err := r.db.First(identity, "identity_id = ?", identityId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get identity")
 	}

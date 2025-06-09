@@ -11,7 +11,7 @@ type QuantModelRepo struct {
 }
 
 func (r *QuantModelRepo) GetById(quantModelId int64) (*models.QuantModel, error) {
-	var quantModel *models.QuantModel
+	quantModel := &models.QuantModel{}
 	if err := r.db.First(quantModel, "quant_model_id = ?", quantModelId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get quant model")
 	}

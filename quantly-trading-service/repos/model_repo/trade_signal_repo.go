@@ -11,7 +11,7 @@ type TradeSignalRepo struct {
 }
 
 func (r *TradeSignalRepo) GetById(tradeSignalId int64) (*models.TradeSignal, error) {
-	var tradeSignal *models.TradeSignal
+	tradeSignal := &models.TradeSignal{}
 	if err := r.db.First(tradeSignal, "trade_signal_id = ?", tradeSignalId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get trade signal")
 	}

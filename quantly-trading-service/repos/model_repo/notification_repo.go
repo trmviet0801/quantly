@@ -11,7 +11,7 @@ type NotificationRepo struct {
 }
 
 func (r *NotificationRepo) GetById(notificationId int64) (*models.Notification, error) {
-	var notification *models.Notification
+	notification := &models.Notification{}
 	if err := r.db.First(notification, "notification_id = ?", notificationId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get notification")
 	}

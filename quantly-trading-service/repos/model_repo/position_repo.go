@@ -13,7 +13,7 @@ type PositionRepo struct {
 }
 
 func (r *PositionRepo) GetById(positionId string) (*models.Position, error) {
-	var position *models.Position
+	position := &models.Position{}
 	if err := r.db.First(position, "position_id = ?", positionId).Error; err != nil {
 		return nil, utils.OnError(err, "an not get position by id")
 	}

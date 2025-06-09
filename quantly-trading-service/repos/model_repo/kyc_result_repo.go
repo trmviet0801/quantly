@@ -13,7 +13,7 @@ type KycResultRepo struct {
 }
 
 func (r *KycResultRepo) GetById(kycResultId int) (*models.KycResult, error) {
-	var kycResult *models.KycResult
+	kycResult := &models.KycResult{}
 	if err := r.db.First(kycResult, "kyc_result_id = ?", kycResultId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get kyc result")
 	}

@@ -13,7 +13,7 @@ type BalanceSheetRepo struct {
 }
 
 func (r *BalanceSheetRepo) GetById(id string) (*models.BalanceSheet, error) {
-	var balanceSheet models.BalanceSheet
+	balanceSheet := models.BalanceSheet{}
 	if err := r.db.First(&balanceSheet, "stock_symbol = ?", id).Error; err != nil {
 		return nil, utils.OnError(err, "can not get balance sheet")
 	}

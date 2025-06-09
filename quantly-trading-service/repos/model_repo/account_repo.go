@@ -13,11 +13,11 @@ type AccountRepo struct {
 }
 
 func (accountRepo *AccountRepo) GetById(id string) (*models.Account, error) {
-	var account models.Account
+	account := &models.Account{}
 	if err := accountRepo.db.First(&account, "account_id = ?", id).Error; err != nil {
 		return nil, err
 	}
-	return &account, nil
+	return account, nil
 }
 
 func (accountRepo *AccountRepo) Create(account *models.Account) error {

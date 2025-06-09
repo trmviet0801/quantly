@@ -11,7 +11,7 @@ type TradingConfigurationRepo struct {
 }
 
 func (r *TradingConfigurationRepo) GetById(tradingConfigurationId int64) (*models.TradingConfiguration, error) {
-	var tradingConfiguration *models.TradingConfiguration
+	tradingConfiguration := &models.TradingConfiguration{}
 	if err := r.db.First(tradingConfiguration, "trading_configuration_id = ?", tradingConfigurationId).Error; err != nil {
 		return nil, utils.OnError(err, "can not select trading confiuration")
 	}

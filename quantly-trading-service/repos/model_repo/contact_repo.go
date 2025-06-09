@@ -11,7 +11,7 @@ type ContactRepo struct {
 }
 
 func (r *ContactRepo) GetById(contactId int64) (*models.Contact, error) {
-	var contact *models.Contact
+	contact := &models.Contact{}
 	if err := r.db.First(contact, "contact_id = ?", contactId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get contact")
 	}

@@ -11,7 +11,7 @@ type UserRepo struct {
 }
 
 func (r *UserRepo) GetById(userId int64) (*models.User, error) {
-	var user *models.User
+	user := &models.User{}
 	if err := r.db.First(user, "user_id = ?", userId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get user")
 	}

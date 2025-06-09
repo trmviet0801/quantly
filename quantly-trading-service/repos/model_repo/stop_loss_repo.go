@@ -13,7 +13,7 @@ type StopLossRepo struct {
 }
 
 func (r *StopLossRepo) GetById(stopLossId string) (*models.StopLoss, error) {
-	var stopLoss *models.StopLoss
+	stopLoss := &models.StopLoss{}
 	if err := r.db.First(stopLoss, "stop_loss_id = ?", stopLossId).Error; err != nil {
 		return nil, utils.OnError(err, "can not get stop loss")
 	}

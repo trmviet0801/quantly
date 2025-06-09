@@ -13,7 +13,7 @@ type IncomeRepo struct {
 }
 
 func (r *IncomeRepo) GetById(stockSymbol string) (*models.Income, error) {
-	var income *models.Income
+	income := &models.Income{}
 	if err := r.db.First(income, "stock_symbol = ?", stockSymbol).Error; err != nil {
 		return nil, utils.OnError(err, "can not find income")
 	}
