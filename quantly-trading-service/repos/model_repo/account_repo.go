@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/trmviet0801/quantly/models"
+	"github.com/trmviet0801/quantly/utils"
 	"gorm.io/gorm"
 )
 
@@ -21,10 +22,7 @@ func (accountRepo *AccountRepo) GetById(id string) (*models.Account, error) {
 
 func (accountRepo *AccountRepo) Create(account *models.Account) error {
 	err := accountRepo.db.Create(account).Error
-	if err != nil {
-		return fmt.Errorf("can not create new account: %w", err)
-	}
-	return nil
+	return utils.OnError(err, "can not create new account")
 }
 
 func (r *AccountRepo) Update(account *models.Account) error {
@@ -32,16 +30,10 @@ func (r *AccountRepo) Update(account *models.Account) error {
 		return fmt.Errorf("input not valid")
 	}
 	err := r.db.Save(account).Error
-	if err != nil {
-		return fmt.Errorf("can not update account")
-	}
-	return nil
+	return utils.OnError(err, "can not update account")
 }
 
 func (r *AccountRepo) DeleteById(id string) error {
 	err := r.db.Where("account_id = ?", id).Delete(&models.Account{}).Error
-	if err != nil {
-		return fmt.Errorf("can not delete account: %w", err)
-	}
-	return nil
+	return utils.OnError(err, "can not delete account")
 }

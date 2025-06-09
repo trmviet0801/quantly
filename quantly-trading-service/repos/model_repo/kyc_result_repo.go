@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/trmviet0801/quantly/models"
+	"github.com/trmviet0801/quantly/utils"
 	"gorm.io/gorm"
 )
 
@@ -13,19 +14,15 @@ type KycResultRepo struct {
 
 func (r *KycResultRepo) GetById(kycResultId int) (*models.KycResult, error) {
 	var kycResult *models.KycResult
-	err := r.db.First(kycResult, "kyc_result_id = ?", kycResultId).Error
-	if err != nil {
-		return nil, fmt.Errorf("can not get kyc result: %w", err)
+	if err := r.db.First(kycResult, "kyc_result_id = ?", kycResultId).Error; err != nil {
+		return nil, utils.OnError(err, "can not get kyc result")
 	}
 	return kycResult, nil
 }
 
 func (r *KycResultRepo) Create(kycResult *models.KycResult) error {
 	err := r.db.Create(kycResult).Error
-	if err != nil {
-		return fmt.Errorf("can not create kyc result: %w", err)
-	}
-	return nil
+	return utils.OnError(err, "can not create kyc result")
 }
 
 func (r *KycResultRepo) Update(kycResult *models.KycResult) error {
@@ -34,16 +31,10 @@ func (r *KycResultRepo) Update(kycResult *models.KycResult) error {
 	}
 
 	err := r.db.Save(kycResult).Error
-	if err != nil {
-		return fmt.Errorf("can not update kyc: %w", err)
-	}
-	return nil
+	return utils.OnError(err, "can not update kyc")
 }
 
 func (r *KycResultRepo) DeleteById(kycResultId int64) error {
 	err := r.db.Where("kyc_result_id = ?", kycResultId).Delete(&models.KycResult{}).Error
-	if err != nil {
-		return fmt.Errorf("can not delete kyc result: %w", err)
-	}
-	return nil
+	return utils.OnError(err, "can not delete kyc result")
 }
