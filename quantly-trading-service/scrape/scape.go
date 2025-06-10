@@ -1,5 +1,0 @@
-package scrape
-
-func ScrapeStockFinancialIndexes() {
-
-}
