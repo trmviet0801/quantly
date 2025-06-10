@@ -77,15 +77,13 @@ func (stock *Stock) GetFinancialIndex(wg *sync.WaitGroup) {
 	//DayHigh
 	//MarketCap
 	//Volume
-	//MarketCap
 	c.OnHTML("fin-streamer", func(e *colly.HTMLElement) {
-		if e.Attr("data-field") == "regularMarketOpen" {
+		switch e.Attr("data-field") {
+		case "regularMarketOpen":
 			openPrice, err := strconv.ParseFloat(strings.TrimSpace(e.Text), 64)
 			utils.OnLogError(err, fmt.Sprintf("[%v] can not parse open price: %v", stock.Symbol, e.Text))
 			stock.OpenPrice = openPrice
-		}
-
-		if e.Attr("data-field") == "regularMarketDayRange" {
+		case "regularMarketDayRange":
 			dayRangeArr := strings.Split(e.Text, " ")
 
 			dayLow, err := strconv.ParseFloat(utils.RemoveSpecialSymbol(dayRangeArr[0]), 64)
@@ -97,10 +95,7 @@ func (stock *Stock) GetFinancialIndex(wg *sync.WaitGroup) {
 			stock.DayHigh = dayHigh
 			stock.DayLow = dayLow
 			stock.DayRange = dayHigh - dayLow
-
-		}
-
-		if e.Attr("data-field") == "regularMarketVolume" {
+		case "regularMarketVolume":
 			volume, err := strconv.ParseInt(utils.RemoveSpecialSymbol(e.Text), 10, 64)
 			utils.OnLogError(err, fmt.Sprintf("[%v] can not parse voume: %v", stock.Symbol, e.Text))
 			stock.Volume = volume
@@ -113,13 +108,12 @@ func (stock *Stock) GetFinancialIndex(wg *sync.WaitGroup) {
 		label := e.ChildText("span[title]")
 		value := e.ChildText("fin-streamer")
 
-		if label == "PE Ratio (TTM)" {
+		switch label {
+		case "PE Ratio (TTM)":
 			pe, err := strconv.ParseFloat(strings.TrimSpace(value), 32)
 			utils.OnLogError(err, fmt.Sprintf("[%v] can not pe ratio: %v", stock.Symbol, value))
 			stock.PERatioTtm = float32(pe)
-		}
-
-		if label == "EPS (TTM)" {
+		case "EPS (TTM)":
 			eps, err := strconv.ParseFloat(strings.TrimSpace(value), 32)
 			utils.OnLogError(err, fmt.Sprintf("[%v] can not eps: %v", stock.Symbol, value))
 			stock.EPSTtm = float32(eps)
