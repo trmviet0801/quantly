@@ -2,10 +2,12 @@ package models
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"strconv"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/gocolly/colly/v2"
 	"github.com/joho/godotenv"
@@ -14,28 +16,28 @@ import (
 )
 
 type Stock struct {
-	Name            string  `binding:"required" json:"name"`
-	Symbol          string  `gorm:"primaryKey" binding:"required" json:"stock_symbol"`
-	IpoYear         int16   `json:"ipo_year"`
-	Country         string  `binding:"required" json:"country"`
-	CurrentPrice    float64 `json:"current_price"`
-	PriceChange     float64 `json:"price_change"`
-	ChangePercent   float32 `json:"change_percent"`
-	OpenPrice       float64 `json:"open_price"`
-	DayRange        float64 `json:"day_range"`
-	DayLow          float64 `json:"day_low"`
-	DayHigh         float64 `json:"day_high"`
-	Volume          int64   `json:"volume"`
-	LatestTradeTime string  `json:"latest_trade_time"`
-	Ticker          string  `json:"ticker"`
-	Exchange        string  `json:"exchange"`
-	Industry        string  `binding:"required" json:"industry"`
-	Sector          string  `binding:"required" json:"sector"`
-	Employees       int32   `json:"employees"`
-	Headquarters    string  `json:"headquarters"`
-	MarketCap       float64 `json:"market_cap"`
-	PERatioTtm      float32 `json:"pe_ratio_ttm"`
-	EPSTtm          float32 `json:"eps_ttm"`
+	Name            string    `gorm:"column:name" binding:"required"`
+	Symbol          string    `gorm:"primaryKey;column:stock_symbol" binding:"required"`
+	IpoYear         int16     `gorm:"column:ipo_year"`
+	Country         string    `gorm:"column:country" binding:"required"`
+	CurrentPrice    float64   `gorm:"column:current_price"`
+	PriceChange     float64   `gorm:"column:price_change"`
+	ChangePercent   float32   `gorm:"column:change_percent"`
+	OpenPrice       float64   `gorm:"column:open_price"`
+	DayRange        float64   `gorm:"column:day_range"`
+	DayLow          float64   `gorm:"column:day_low"`
+	DayHigh         float64   `gorm:"column:day_high"`
+	Volume          int64     `gorm:"column:volume"`
+	LatestTradeTime time.Time `gorm:"column:latest_trade_time"`
+	Ticker          string    `gorm:"column:ticker"`
+	Exchange        string    `gorm:"column:exchange"`
+	Industry        string    `gorm:"column:industry" binding:"required"`
+	Sector          string    `gorm:"column:sector" binding:"required"`
+	Employees       int32     `gorm:"column:employees"`
+	Headquarters    string    `gorm:"column:headquarters"`
+	MarketCap       float64   `gorm:"column:market_cap"`
+	PERatioTtm      float32   `gorm:"column:pe_ratio_ttm"`
+	EPSTtm          float32   `gorm:"column:eps_ttm"`
 }
 
 func (stock *Stock) GetFinancialIndex(wg *sync.WaitGroup) {
@@ -44,12 +46,47 @@ func (stock *Stock) GetFinancialIndex(wg *sync.WaitGroup) {
 	err := godotenv.Load()
 	utils.OnLogError(err, "can not load environment variables")
 
-	url := os.Getenv("STOCK_RESOURCE_URL") + stock.Symbol
-
 	c := colly.NewCollector(
 		colly.AllowedDomains(os.Getenv("STOCK_BASED_URL")),
-		colly.MaxRequests(5),
+		colly.MaxRequests(20),
 	)
+
+	c.Limit(&colly.LimitRule{
+		DomainGlob:  "yahoo.",
+		Parallelism: 1,
+		Delay:       5 * time.Second,
+		RandomDelay: 10 * time.Second,
+	})
+
+	userAgents := []string{
+		// Chrome on Windows
+		"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+
+		// Chrome on macOS
+		"Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+
+		// Firefox on Windows
+		"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
+
+		// Firefox on macOS
+		"Mozilla/5.0 (Macintosh; Intel Mac OS X 13.4; rv:125.0) Gecko/20100101 Firefox/125.0",
+
+		// Safari on macOS
+		"Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15",
+
+		// Edge on Windows
+		"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.2478.51",
+		// iPhone Safari
+		"Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+
+		// Android Chrome
+		"Mozilla/5.0 (Linux; Android 13; Pixel 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+
+		// Samsung Browser
+		"Mozilla/5.0 (Linux; Android 13; SAMSUNG SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/22.0 Chrome/124.0.0.0 Mobile Safari/537.36",
+	}
+
+	//url := os.Getenv("STOCK_RESOURCE_URL") + stock.Symbol
 
 	//CurrentPrice
 	//PriceChange
@@ -123,17 +160,25 @@ func (stock *Stock) GetFinancialIndex(wg *sync.WaitGroup) {
 	c.OnRequest(func(r *colly.Request) {
 		zap.L().Info("Get new data",
 			zap.String("Symbol", stock.Symbol),
-			zap.String("URL", url),
+			zap.String("URL", os.Getenv("STOCK_RESOURCE_URL")+stock.Symbol),
 		)
+		r.Headers.Add("User-Agent", userAgents[rand.Intn(len(userAgents)-1)+1])
 	})
 
 	c.OnError(func(r *colly.Response, err error) {
-		zap.L().Error("Request Error",
-			zap.String("Symbol", stock.Symbol),
-			zap.String("URL", r.Request.URL.String()),
-		)
+		if r.StatusCode == 429 {
+			zap.L().Error("IP Banned",
+				zap.String("Symbol", stock.Symbol),
+				zap.String("URL", r.Request.URL.String()),
+			)
+		} else {
+			zap.L().Error("Error",
+				zap.String("Symbol", stock.Symbol),
+				zap.Int("", r.StatusCode),
+				zap.String("URL", r.Request.URL.String()),
+			)
+		}
 		r.Request.Retry()
 	})
-
-	c.Visit(url)
+	c.Visit(os.Getenv("STOCK_RESOURCE_URL") + stock.Symbol)
 }

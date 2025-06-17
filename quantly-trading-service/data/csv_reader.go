@@ -6,14 +6,13 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/joho/godotenv"
 	"github.com/trmviet0801/quantly/models"
 	"github.com/trmviet0801/quantly/utils"
 )
 
 // Get basic information of all stocks in the us market
-func GetAllUsStock() []*models.Stock {
-	var rawData [][]string = loadUsStocksFromFile()
+func GetAllUsStock(url string) []*models.Stock {
+	var rawData [][]string = loadUsStocksFromFile(url)
 	var stocks = []*models.Stock{}
 
 	for _, stock := range rawData {
@@ -40,11 +39,8 @@ func constructBasicInforForStock(rawData []string) *models.Stock {
 	}
 }
 
-func loadUsStocksFromFile() [][]string {
-	err := godotenv.Load()
-	utils.OnLogError(err, "can not load environment variable")
-
-	file, err := os.Open(os.Getenv("US_STOCK_RAW_DATA"))
+func loadUsStocksFromFile(url string) [][]string {
+	file, err := os.Open(url)
 	utils.OnLogError(err, "Can not open csv file")
 	defer file.Close()
 

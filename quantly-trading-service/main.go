@@ -1,11 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
-	"github.com/trmviet0801/quantly/data"
-	"github.com/trmviet0801/quantly/models"
+	"github.com/trmviet0801/quantly/automate"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -29,8 +27,9 @@ func init() {
 }
 
 func main() {
-	var stocks []*models.Stock = data.GetStocksFinancialIndexes()
-	for _, stock := range stocks {
-		fmt.Println(stock)
-	}
+	// var stocks []*models.Stock = data.GetStocksFinancialIndexes()
+	// for _, stock := range stocks {
+	// 	fmt.Println(stock)
+	// }
+	automate.AutomateController()
 }

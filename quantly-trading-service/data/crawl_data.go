@@ -6,8 +6,8 @@ import (
 	"github.com/trmviet0801/quantly/models"
 )
 
-func GetStocksFinancialIndexes() []*models.Stock {
-	var stocks []*models.Stock = GetAllUsStock()
+func GetStocksFinancialIndexes(url string) []*models.Stock {
+	var stocks []*models.Stock = GetAllUsStock(url)
 	var wg sync.WaitGroup
 
 	for _, stock := range stocks {

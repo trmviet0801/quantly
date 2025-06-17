@@ -22,6 +22,6 @@ func OnLogError(err error, msg string) {
 }
 
 func RemoveSpecialSymbol(value string) string {
-	reg := regexp.MustCompile(`[-()%,]`)
+	reg := regexp.MustCompile(`[()%,]`)
 	return reg.ReplaceAllString(strings.TrimSpace(value), "")
 }
