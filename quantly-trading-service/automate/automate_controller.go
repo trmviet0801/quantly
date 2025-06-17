@@ -6,6 +6,7 @@ import (
 
 	"github.com/trmviet0801/quantly/data"
 	"github.com/trmviet0801/quantly/database"
+	"github.com/trmviet0801/quantly/models"
 	"github.com/trmviet0801/quantly/repos/model_repo"
 	"go.uber.org/zap"
 )
@@ -16,7 +17,8 @@ func AutomateController() {
 	<-done
 }
 
-// crawl stocks data
+// crawling stocks data
+// saving new data [Stock + StockPrice] into DB
 func getNewData(done chan bool) {
 	count := 1
 	zap.L().Info("Starting crawl stocks data")
@@ -26,6 +28,10 @@ func getNewData(done chan bool) {
 		stocks := data.GetStocksFinancialIndexes(url)
 
 		stockRepo := model_repo.StockRepo{
+			DB: database.GetDatabase(),
+		}
+
+		stockPriceRepo := model_repo.StockPriceRepo{
 			DB: database.GetDatabase(),
 		}
 
@@ -45,6 +51,7 @@ func getNewData(done chan bool) {
 					zap.L().Info("Save stock into DB successfully",
 						zap.String("Symbol", stock.Symbol),
 					)
+					saveStockPrice(stock, &stockPriceRepo)
 				}
 			}
 		}
@@ -58,4 +65,24 @@ func getNewData(done chan bool) {
 		time.Sleep(1 * time.Minute)
 	}
 	done <- true
+}
+
+func saveStockPrice(stock *models.Stock, stockPriceRepo *model_repo.StockPriceRepo) {
+	stockPrice := &models.StockPrice{
+		Symbol:    stock.Symbol,
+		Price:     stock.CurrentPrice,
+		Timestamp: time.Now(),
+	}
+
+	err := stockPriceRepo.Update(stockPrice)
+	if err != nil {
+		zap.L().Info("Save stock price into DB successfully",
+			zap.String("Symbol", stockPrice.Symbol),
+		)
+	} else {
+		zap.L().Error("Can not save Stock Price",
+			zap.String("Symbol", stock.Symbol),
+			zap.String("Price", fmt.Sprintf("%v", stock.CurrentPrice)),
+		)
+	}
 }

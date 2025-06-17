@@ -6,6 +6,7 @@ import (
 	"sync"
 
 	"github.com/joho/godotenv"
+	"github.com/trmviet0801/quantly/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -32,6 +33,8 @@ func GetDatabase() *gorm.DB {
 		if err != nil {
 			panic("Cannot connect to database: " + err.Error())
 		}
+
+		DB.AutoMigrate(&models.StockPrice{})
 	})
 	return DB
 }
