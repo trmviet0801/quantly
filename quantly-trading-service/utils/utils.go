@@ -10,9 +10,20 @@ import (
 
 func OnError(err error, msg string) error {
 	if err != nil {
+		zap.L().Error(fmt.Sprintf("%v", err),
+			zap.String("Msg", msg))
 		return fmt.Errorf("%v %w", msg, err)
 	}
 	return nil
+}
+
+func IsError(err error, msg string) bool {
+	if err != nil {
+		zap.L().Error(fmt.Sprintf("%v", err),
+			zap.String("Msg", msg))
+		return true
+	}
+	return false
 }
 
 func OnLogError(err error, msg string) {

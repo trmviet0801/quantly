@@ -2,8 +2,10 @@ package main
 
 import (
 	"os"
+	"testing"
 
-	"github.com/trmviet0801/quantly/automate"
+	"github.com/trmviet0801/quantly/dto"
+	"github.com/trmviet0801/quantly/usecase"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -51,6 +53,19 @@ func init() {
 	zap.ReplaceGlobals(logger)
 }
 
-func main() {
-	automate.AutomateController()
+func TestSubmitOrder(t *testing.T) {
+	//automate.AutomateController()
+
+	order := dto.OrderDto{
+		Symbol:        "AAPL",
+		Qty:           "1",
+		Side:          "buy",
+		Type:          "limit", // e.g. "market", "limit"
+		TimeInForce:   "gtc",   // e.g. "gtc", "day", "opg"
+		LimitPrice:    "195.50",
+		ExtendedHours: false,
+		OrderClass:    "simple",
+	}
+
+	usecase.SubmitOrder(&order, "da4337b4-1f79-4427-a47d-2f2044be6402")
 }

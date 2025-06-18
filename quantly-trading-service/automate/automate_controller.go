@@ -12,17 +12,16 @@ import (
 )
 
 func AutomateController() {
-	done := make(chan bool)
-	go getNewData(done)
-	<-done
+	go getNewData()
+	select {}
 }
 
 // crawling stocks data
 // saving new data [Stock + StockPrice] into DB
-func getNewData(done chan bool) {
+func getNewData() {
 	count := 1
 	zap.L().Info("Starting crawl stocks data")
-	for 0 == 0 {
+	for {
 		url := "./res/us-stocks-" + fmt.Sprintf("%d", count) + ".csv"
 
 		stocks := data.GetStocksFinancialIndexes(url)
@@ -41,6 +40,7 @@ func getNewData(done chan bool) {
 			time, _ := time.Parse("2006-01-02 15:04:05", "1970-01-01 00:00:00")
 			stock.LatestTradeTime = time
 
+			// CurrentPrice == 0 -> error when crawling
 			if stock.CurrentPrice != 0 {
 				err := stockRepo.Update(stock)
 				if err != nil {
@@ -56,15 +56,17 @@ func getNewData(done chan bool) {
 			}
 		}
 
-		if count+1 == 60 {
-			count = 1
-		} else {
-			count++
-		}
+		increaseIndex(&count)
 
 		time.Sleep(1 * time.Minute)
 	}
-	done <- true
+}
+
+func increaseIndex(count *int) {
+	*count++
+	if *count == 60 {
+		*count = 1
+	}
 }
 
 func saveStockPrice(stock *models.Stock, stockPriceRepo *model_repo.StockPriceRepo) {
