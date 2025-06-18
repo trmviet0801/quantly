@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"testing"
 
@@ -57,7 +56,7 @@ func TestSubmitOrder(t *testing.T) {
 	//automate.AutomateController()
 
 	// order := dto.OrderDto{
-	// 	Symbol:        "HCTI",
+	// 	Symbol:        "",
 	// 	Qty:           "1",
 	// 	Side:          "buy",
 	// 	Type:          "limit", // e.g. "market", "limit"
@@ -67,10 +66,17 @@ func TestSubmitOrder(t *testing.T) {
 	// 	OrderClass:    "simple",
 	// }
 
-	//usecase.SubmitOrder(&order, "12c5d20e-aa3d-412b-985e-245a927a1be4")
-	data := usecase.GetAllOrdersOfAccount("da4337b4-1f79-4427-a47d-2f2044be6402")
-	fmt.Println(len(*data))
-	for _, item := range *data {
-		fmt.Println(item.String() + "\n")
-	}
+	// usecase.SubmitOrder(&order, "12c5d20e-aa3d-412b-985e-245a927a1be4")
+
+	// data, err := usecase.GetAllOrdersOfAccount("da4337b4-1f79-4427-a47d-2f2044be6402")
+	// if err != nil {
+	// 	fmt.Println(err)
+	// } else {
+	// 	fmt.Println(len(*data))
+	// 	for _, item := range *data {
+	// 		fmt.Println(item.String() + "\n")
+	// 	}
+	// }
+
+	usecase.CancelOrder("12c5d20e-aa3d-412b-985e-245a927a1be4", "18315a8-44dc-4a39-a934-0da5c7696136")
 }

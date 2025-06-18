@@ -2,20 +2,34 @@ package network
 
 import (
 	"bytes"
+	"fmt"
+	"io"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/trmviet0801/quantly/utils"
+	"go.uber.org/zap"
 )
 
-func SafeCall(method string, url string, header map[string]string, body []byte, auth map[string]string) (*http.Response, error) {
+func SafeCall(method string, url string, header map[string]string, body []byte) (*http.Response, error) {
 	client := &http.Client{
 		Timeout: 10 * time.Minute,
 	}
 
-	request, err := http.NewRequest(method, url, bytes.NewReader(body))
+	var requestBody io.Reader = nil
+	if body != nil {
+		requestBody = bytes.NewReader(body)
+	}
+
+	request, err := http.NewRequest(method, url, requestBody)
 	if utils.IsError(err, "can not create new request") {
 		return nil, err
+	}
+
+	auth := map[string]string{
+		"username": os.Getenv("ALPACA_API_KEY"),
+		"password": os.Getenv("ALPACA_API_SECRET"),
 	}
 
 	setHeaderForRequest(request, header)
@@ -23,6 +37,8 @@ func SafeCall(method string, url string, header map[string]string, body []byte, 
 
 	response, err := client.Do(request)
 	if utils.IsError(err, "can not send request") {
+		fmt.Sprintln(err.Error())
+		zap.Error(fmt.Errorf("url: %v", url))
 		return nil, err
 	}
 
@@ -30,6 +46,9 @@ func SafeCall(method string, url string, header map[string]string, body []byte, 
 }
 
 func setHeaderForRequest(request *http.Request, headers map[string]string) {
+	if headers == nil {
+		return
+	}
 	for key, value := range headers {
 		request.Header.Set(key, value)
 	}
