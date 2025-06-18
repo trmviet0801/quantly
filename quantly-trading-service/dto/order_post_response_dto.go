@@ -2,7 +2,7 @@ package dto
 
 import "fmt"
 
-type OrderResponseDto struct {
+type OrderPostResponseDto struct {
 	AssetID                string `json:"asset_id"`
 	Symbol                 string `json:"symbol"`
 	Exchange               string `json:"exchange"`
@@ -23,7 +23,7 @@ type OrderResponseDto struct {
 	QtyAvailable           string `json:"qty_available"`
 }
 
-func (o *OrderResponseDto) String() string {
+func (o *OrderPostResponseDto) String() string {
 	return fmt.Sprintf(
 		"OrderResponseDto{\n"+
 			"  AssetID: %s\n"+

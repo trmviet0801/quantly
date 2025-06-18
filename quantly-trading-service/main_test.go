@@ -1,10 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"testing"
 
-	"github.com/trmviet0801/quantly/dto"
 	"github.com/trmviet0801/quantly/usecase"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -56,16 +56,21 @@ func init() {
 func TestSubmitOrder(t *testing.T) {
 	//automate.AutomateController()
 
-	order := dto.OrderDto{
-		Symbol:        "AAPL",
-		Qty:           "1",
-		Side:          "buy",
-		Type:          "limit", // e.g. "market", "limit"
-		TimeInForce:   "gtc",   // e.g. "gtc", "day", "opg"
-		LimitPrice:    "195.50",
-		ExtendedHours: false,
-		OrderClass:    "simple",
-	}
+	// order := dto.OrderDto{
+	// 	Symbol:        "HCTI",
+	// 	Qty:           "1",
+	// 	Side:          "buy",
+	// 	Type:          "limit", // e.g. "market", "limit"
+	// 	TimeInForce:   "gtc",   // e.g. "gtc", "day", "opg"
+	// 	LimitPrice:    "10.5",
+	// 	ExtendedHours: false,
+	// 	OrderClass:    "simple",
+	// }
 
-	usecase.SubmitOrder(&order, "da4337b4-1f79-4427-a47d-2f2044be6402")
+	//usecase.SubmitOrder(&order, "12c5d20e-aa3d-412b-985e-245a927a1be4")
+	data := usecase.GetAllOrdersOfAccount("da4337b4-1f79-4427-a47d-2f2044be6402")
+	fmt.Println(len(*data))
+	for _, item := range *data {
+		fmt.Println(item.String() + "\n")
+	}
 }
