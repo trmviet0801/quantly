@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"testing"
 
@@ -78,5 +79,11 @@ func TestSubmitOrder(t *testing.T) {
 	// 	}
 	// }
 
-	usecase.CancelOrder("12c5d20e-aa3d-412b-985e-245a927a1be4", "18315a8-44dc-4a39-a934-0da5c7696136")
+	// usecase.CancelOrder("12c5d20e-aa3d-412b-985e-245a927a1be4", "18315a8-44dc-4a39-a934-0da5c7696136")
+	positions, err := usecase.GetOpenPositionsOfAccount("12c5d20e-aa3d-412b-985e-245a927a1be4")
+	if err == nil {
+		for _, position := range positions {
+			fmt.Println(position.String())
+		}
+	}
 }

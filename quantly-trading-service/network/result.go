@@ -51,7 +51,7 @@ func parseHttpResponse(response *http.Response, data interface{}) error {
 
 	err = json.Unmarshal(body, data)
 	if err != nil {
-		zap.L().Error(fmt.Sprintf("Can not parse response body \n URL: %v", response.Request.URL))
+		zap.L().Error(fmt.Sprintf("Can not parse response body \n URL: %v \n error: %v", response.Request.URL, err))
 		return fmt.Errorf("can not parse response body \n URL: %v", response.Request.URL)
 	}
 	return nil

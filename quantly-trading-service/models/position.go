@@ -1,8 +1,10 @@
 package models
 
+import "fmt"
+
 type Position struct {
-	PositionId             int64   `json:"position_id" gorm:"primaryKey"`
-	AccountId              int64   `json:"account_id"`
+	PositionId             string  `json:"position_id" gorm:"primaryKey"`
+	AccountId              string  `json:"account_id"`
 	AssetId                string  `json:"asset_id"`
 	Symbol                 string  `json:"symbol"`
 	Exchange               string  `json:"exchange"`
@@ -21,4 +23,22 @@ type Position struct {
 	LastDayPrice           float64 `json:"lastday_price"`
 	ChangeToday            float64 `json:"change_today"`
 	QuantityAvailable      float64 `json:"qty_available"`
+}
+
+func (p *Position) String() string {
+	return fmt.Sprintf(
+		"Position{ID:%s, AccountID:%s, Symbol:%s, Side:%s, Qty:%.2f, AvgPrice:%.2f, CurrentPrice:%.2f, MarketValue:%.2f, UnrealizedPL:%.2f (%.2f%%), IntradayPL:%.2f (%.2f%%)}",
+		p.PositionId,
+		p.AccountId,
+		p.Symbol,
+		p.Side,
+		p.Quantity,
+		p.AverageEntryPrice,
+		p.CurrentPrice,
+		p.MarketValue,
+		p.UnrealizedPL,
+		p.UnrealizedPLPC*100,
+		p.UnrealizedIntradayPL,
+		p.UnrealizedIntradayPLPC*100,
+	)
 }

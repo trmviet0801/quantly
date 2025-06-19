@@ -34,7 +34,7 @@ func GetDatabase() *gorm.DB {
 			panic("Cannot connect to database: " + err.Error())
 		}
 
-		DB.AutoMigrate(&models.StockPrice{})
+		DB.AutoMigrate(&models.StockPrice{}, &models.Position{})
 	})
 	return DB
 }

@@ -26,7 +26,7 @@ func (r *PositionRepo) Create(position *models.Position) error {
 }
 
 func (r *PositionRepo) Update(position *models.Position) error {
-	if position.PositionId == 0 {
+	if position.PositionId == "" {
 		return fmt.Errorf("can not update position: invalid input")
 	}
 
