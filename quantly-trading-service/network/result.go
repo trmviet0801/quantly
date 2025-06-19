@@ -42,6 +42,7 @@ func parseHttpErrorResponse(response *http.Response) error {
 	return fmt.Errorf("%v", responseErr)
 }
 
+// transfer json to object
 func parseHttpResponse(response *http.Response, data interface{}) error {
 	body, err := io.ReadAll(response.Body)
 	if err != nil {

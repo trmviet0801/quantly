@@ -77,3 +77,14 @@ func parseFloat(val string) float64 {
 	}
 	return f
 }
+
+func ArrayToArrayOfPointer[T any](arr []T) []*T {
+	result := make([]*T, len(arr))
+
+	for i, item := range arr {
+		val := item
+		result[i] = &val
+	}
+
+	return result
+}

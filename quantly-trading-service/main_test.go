@@ -80,9 +80,16 @@ func TestSubmitOrder(t *testing.T) {
 	// }
 
 	// usecase.CancelOrder("12c5d20e-aa3d-412b-985e-245a927a1be4", "18315a8-44dc-4a39-a934-0da5c7696136")
-	positions, err := usecase.GetOpenPositionsOfAccount("12c5d20e-aa3d-412b-985e-245a927a1be4")
+	// positions, err := usecase.GetOpenPositionsOfAccount("12c5d20e-aa3d-412b-985e-245a927a1be4")
+	// if err == nil {
+	// 	for _, position := range positions {
+	// 		fmt.Println(position.String())
+	// 	}
+	// }
+
+	positionCloseAllResponseDtos, err := usecase.CloseAllPositions("da4337b4-1f79-4427-a47d-2f2044be6402")
 	if err == nil {
-		for _, position := range positions {
+		for _, position := range positionCloseAllResponseDtos {
 			fmt.Println(position.String())
 		}
 	}
