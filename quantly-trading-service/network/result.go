@@ -10,6 +10,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// Checking + Logging err if existed in HTTP response
 func OnResult(response *http.Response, data interface{}) (bool, error) {
 	if response == nil {
 		zap.L().Error("response is empty")

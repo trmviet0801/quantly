@@ -1,0 +1,51 @@
+# Binaries
+/bin/
+/build/
+/out/
+
+# Executable files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, build cache
+*.test
+*.out
+
+# Go build cache
+**/vendor/
+
+# Go module files
+/go.mod
+/go.sum
+
+# Dependency directories (if vendoring is used)
+vendor/
+
+# Environment variables file (don't commit secrets)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# JetBrains IDEs
+*.iml
+out/
+
+# MacOS files
+.DS_Store
+
+# Others
+*.coverprofile

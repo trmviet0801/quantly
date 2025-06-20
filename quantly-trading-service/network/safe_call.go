@@ -12,6 +12,8 @@ import (
 	"go.uber.org/zap"
 )
 
+// Do HTTP request
+// Logging if facing error
 func SafeCall(method string, url string, header map[string]string, body []byte) (*http.Response, error) {
 	client := &http.Client{
 		Timeout: 10 * time.Minute,
@@ -24,6 +26,7 @@ func SafeCall(method string, url string, header map[string]string, body []byte) 
 
 	request, err := http.NewRequest(method, url, requestBody)
 	if utils.IsError(err, "can not create new request") {
+		zap.Error(fmt.Errorf("url: %v \n err: %s", url, err.Error()))
 		return nil, err
 	}
 
@@ -37,14 +40,14 @@ func SafeCall(method string, url string, header map[string]string, body []byte) 
 
 	response, err := client.Do(request)
 	if utils.IsError(err, "can not send request") {
-		fmt.Sprintln(err.Error())
-		zap.Error(fmt.Errorf("url: %v", url))
+		zap.Error(fmt.Errorf("url: %v \n err: %s", url, err.Error()))
 		return nil, err
 	}
 
 	return response, nil
 }
 
+// utils func that sets header (MAP) for HTTP request
 func setHeaderForRequest(request *http.Request, headers map[string]string) {
 	if headers == nil {
 		return
@@ -54,6 +57,7 @@ func setHeaderForRequest(request *http.Request, headers map[string]string) {
 	}
 }
 
+// utils funcs that sets basic authentication for alpaca api gateway
 func setAuthAttributesForRequest(request *http.Request, authCredentials map[string]string) {
 	if authCredentials == nil {
 		return

@@ -26,7 +26,7 @@ func (r *OrderRepo) Create(order *models.Order) error {
 }
 
 func (r *OrderRepo) Update(order *models.Order) error {
-	if order.AccountId == 0 {
+	if order.AccountId == "" {
 		return fmt.Errorf("can not update order: invalid input")
 	}
 

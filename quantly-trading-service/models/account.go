@@ -6,8 +6,8 @@ import (
 )
 
 type Account struct {
-	AccountId              int64           `json:"account_id" gorm:"primaryKey"`
-	UserId                 int64           `binding:"required" json:"user_id"`
+	AccountId              string          `json:"account_id" gorm:"primaryKey;type:varchar(64)"`
+	UserId                 string          `binding:"required" json:"user_id" gorm:"type:varchar(64)"`
 	AccountNumber          string          `json:"account_number"`
 	Status                 string          `json:"status"`
 	CryptoStatus           string          `json:"crypto_status"`
@@ -25,4 +25,5 @@ type Account struct {
 	ManagementStatus       string          `json:"management_status"`
 	ClearingBroker         string          `json:"clearing_broker"`
 	ClearingAccountNumber  string          `json:"clearing_account_number"`
+	Contacts               []Contact       `gorm:"foreignKey:AccountId;references:AccountId"`
 }

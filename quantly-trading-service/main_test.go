@@ -87,10 +87,17 @@ func TestSubmitOrder(t *testing.T) {
 	// 	}
 	// }
 
-	positionCloseAllResponseDtos, err := usecase.CloseAllPositions("da4337b4-1f79-4427-a47d-2f2044be6402")
+	// positionCloseAllResponseDtos, err := usecase.CloseAllPositions("da4337b4-1f79-4427-a47d-2f2044be6402")
+	// if err == nil {
+	// 	for _, position := range positionCloseAllResponseDtos {
+	// 		fmt.Println(position.String())
+	// 	}
+	// }
+
+	portfolioHistory, err := usecase.GetPortfolioHistoryOfAccount("12c5d20e-aa3d-412b-985e-245a927a1be4")
 	if err == nil {
-		for _, position := range positionCloseAllResponseDtos {
-			fmt.Println(position.String())
-		}
+		fmt.Println(portfolioHistory.String())
+	} else {
+		fmt.Println(err.Error())
 	}
 }

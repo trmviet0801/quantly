@@ -2,7 +2,7 @@ package models
 
 type Contact struct {
 	ContactId      int64  `json:"contact_id" gorm:"primaryKey;autoIncrement"`
-	AccountId      int64  `json:"account_id" gorm:"foreignKey:AccountId;references:AccountId;not null"`
+	AccountId      string `json:"account_id" gorm:"type:varchar(64);not null"`
 	EmailAddress   string `json:"email_address" gorm:"not null"`
 	PhoneNumber    string `json:"phone_number" gorm:"not null"`
 	StreestAddress string `json:"street_address"`

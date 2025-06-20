@@ -26,7 +26,7 @@ func (accountRepo *AccountRepo) Create(account *models.Account) error {
 }
 
 func (r *AccountRepo) Update(account *models.Account) error {
-	if account.AccountId == 0 {
+	if account.AccountId == "" {
 		return fmt.Errorf("input not valid")
 	}
 	err := r.DB.Save(account).Error

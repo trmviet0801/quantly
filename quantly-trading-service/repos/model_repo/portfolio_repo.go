@@ -24,7 +24,7 @@ func (r *PortfolioRepo) Create(portfolio *models.Portfolio) error {
 }
 
 func (r *PortfolioRepo) Update(portfolio *models.Portfolio) error {
-	if portfolio.PortfolioId == 0 {
+	if portfolio.PortfolioId == "" {
 		return gorm.ErrRecordNotFound
 	}
 

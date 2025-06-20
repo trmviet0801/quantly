@@ -88,3 +88,28 @@ func ArrayToArrayOfPointer[T any](arr []T) []*T {
 
 	return result
 }
+
+func ConvertDtoToModelPortfolioHistory(dto *dto.PortfolioHistoryDto, accountId string) *models.PortfolioHistory {
+	return &models.PortfolioHistory{
+		AccountId:     accountId,
+		Timestamp:     dto.Timestamp,
+		Equity:        dto.Equity,
+		ProfitLoss:    dto.ProfitLoss,
+		ProfitLossPct: dto.ProfitLossPct,
+		BaseValue:     dto.BaseValue,
+		BaseValueAsof: dto.BaseValueAsof,
+		Timeframe:     dto.Timeframe,
+	}
+}
+
+func ConvertModelToDtoPortfolioHistory(model *models.PortfolioHistory) *dto.PortfolioHistoryDto {
+	return &dto.PortfolioHistoryDto{
+		Timestamp:     model.Timestamp,
+		Equity:        model.Equity,
+		ProfitLoss:    model.ProfitLoss,
+		ProfitLossPct: model.ProfitLossPct,
+		BaseValue:     model.BaseValue,
+		BaseValueAsof: model.BaseValueAsof,
+		Timeframe:     model.Timeframe,
+	}
+}

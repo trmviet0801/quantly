@@ -17,7 +17,7 @@ import (
 
 type Stock struct {
 	Name            string    `gorm:"column:name" binding:"required"`
-	Symbol          string    `gorm:"primaryKey;column:stock_symbol" binding:"required"`
+	Symbol          string    `gorm:"primaryKey;column:stock_symbol;type:varchar(64)" binding:"required"`
 	IpoYear         int16     `gorm:"column:ipo_year"`
 	Country         string    `gorm:"column:country" binding:"required"`
 	CurrentPrice    float64   `gorm:"column:current_price"`

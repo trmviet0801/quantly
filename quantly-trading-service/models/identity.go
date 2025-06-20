@@ -4,7 +4,7 @@ import "time"
 
 type Identity struct {
 	IdentityId            int64     `json:"identity_id" gorm:"primaryKey"`
-	AccountId             int64     `json:"account_id" gorm:"foreignKey:AccountId;references:AccountId;not null"`
+	AccountId             string    `json:"account_id" gorm:"foreignKey:AccountId;references:AccountId;not null;type:varchar(64)"`
 	TaxId                 string    `json:"tax_id"`
 	TaxIdType             string    `json:"tax_id_type"` // e.g., "SSN", "EIN", etc.
 	CountryOfCitizenship  string    `json:"country_of_citizenship"`

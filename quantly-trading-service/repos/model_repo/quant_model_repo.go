@@ -24,7 +24,7 @@ func (r *QuantModelRepo) Create(quantModel *models.QuantModel) error {
 }
 
 func (r *QuantModelRepo) Update(quantModel *models.QuantModel) error {
-	if quantModel.QuantModelId == 0 {
+	if quantModel.QuantModelId == "" {
 		return gorm.ErrRecordNotFound
 	}
 

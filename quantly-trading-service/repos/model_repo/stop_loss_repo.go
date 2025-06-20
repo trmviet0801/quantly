@@ -31,7 +31,7 @@ func (r *StopLossRepo) DeleteById(stopLossId string) error {
 }
 
 func (r *StopLossRepo) Update(stopLoss *models.StopLoss) error {
-	if stopLoss.StopLostId == 0 {
+	if stopLoss.StopLosstId == "" {
 		return fmt.Errorf("can not update stop loss: input invalid")
 	}
 

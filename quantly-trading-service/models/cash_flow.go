@@ -1,7 +1,7 @@
 package models
 
 type CashFlow struct {
-	StockSymbol                   string  `json:"stock_symbol" gorm:"primaryKey"`
+	StockSymbol                   string  `json:"stock_symbol" gorm:"primaryKey;type:varchar(64)"`
 	OperatingCashFlow             float64 `json:"operating_cash_flow"`
 	InvestingCashFlow             float64 `json:"investing_cash_flow"`
 	FinancingCashFlow             float64 `json:"financing_cash_flow"`

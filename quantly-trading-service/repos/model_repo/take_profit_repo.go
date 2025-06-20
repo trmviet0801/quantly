@@ -24,7 +24,7 @@ func (r *TakeProfitRepo) Create(takeProfit *models.TakeProfit) error {
 	return utils.OnError(err, "can not create take profit")
 }
 func (r *TakeProfitRepo) Update(takeProfit *models.TakeProfit) error {
-	if takeProfit.TakeProfitId == 0 {
+	if takeProfit.TakeProfitId == "" {
 		return fmt.Errorf("can not update take profit: invalid input")
 	}
 

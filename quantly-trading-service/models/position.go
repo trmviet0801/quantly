@@ -3,8 +3,8 @@ package models
 import "fmt"
 
 type Position struct {
-	PositionId             string  `json:"position_id" gorm:"primaryKey"`
-	AccountId              string  `json:"account_id"`
+	PositionId             string  `json:"position_id" gorm:"primaryKey;type:varchar(64)"`
+	AccountId              string  `json:"account_id" gorm:"type:varchar(64)"`
 	AssetId                string  `json:"asset_id"`
 	Symbol                 string  `json:"symbol"`
 	Exchange               string  `json:"exchange"`

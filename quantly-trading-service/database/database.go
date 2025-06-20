@@ -7,6 +7,7 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/trmviet0801/quantly/models"
+	"go.uber.org/zap"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -16,7 +17,8 @@ var once sync.Once
 
 func GetDatabase() *gorm.DB {
 	once.Do(func() {
-		err := godotenv.Load()
+		var err error
+		err = godotenv.Load()
 		if err != nil {
 			panic("Cannot load environment variables")
 		}
@@ -34,7 +36,38 @@ func GetDatabase() *gorm.DB {
 			panic("Cannot connect to database: " + err.Error())
 		}
 
-		DB.AutoMigrate(&models.StockPrice{}, &models.Position{})
+		modelsToMigrate := []any{
+			&models.Contact{},
+			&models.Account{},
+			&models.BalanceSheet{},
+			&models.CashFlow{},
+			&models.Disclosure{},
+			&models.ErrorResponse{},
+			&models.Identity{},
+			&models.Income{},
+			&models.KycResult{},
+			&models.Notification{},
+			&models.Order{},
+			&models.Portfolio{},
+			&models.PortfolioHistory{},
+			&models.Position{},
+			&models.QuantModel{},
+			&models.Stock{},
+			&models.StockPrice{},
+			&models.StopLoss{},
+			&models.TakeProfit{},
+			&models.TradeSignal{},
+			&models.TradingConfiguration{},
+			&models.TrustedContact{},
+			&models.User{},
+		}
+
+		for _, model := range modelsToMigrate {
+			if err := DB.AutoMigrate(model); err != nil {
+				zap.L().Error("AutoMigrate failed", zap.String("model", fmt.Sprintf("%T", model)), zap.Error(err))
+				panic("❌ Failed to migrate DB model: " + fmt.Sprintf("%T", model))
+			}
+		}
 	})
 	return DB
 }

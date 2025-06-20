@@ -25,7 +25,7 @@ func (r *UserRepo) Create(user *models.User) error {
 }
 
 func (r *UserRepo) Update(user *models.User) error {
-	if user.UserId == 0 {
+	if user.UserId == "" {
 		return gorm.ErrRecordNotFound
 	}
 
