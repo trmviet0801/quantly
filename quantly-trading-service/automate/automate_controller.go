@@ -78,13 +78,14 @@ func saveStockPrice(stock *models.Stock, stockPriceRepo *model_repo.StockPriceRe
 
 	err := stockPriceRepo.Update(stockPrice)
 	if err != nil {
-		zap.L().Info("Save stock price into DB successfully",
-			zap.String("Symbol", stockPrice.Symbol),
-		)
-	} else {
 		zap.L().Error("Can not save Stock Price",
 			zap.String("Symbol", stock.Symbol),
 			zap.String("Price", fmt.Sprintf("%v", stock.CurrentPrice)),
+			zap.String("Error", err.Error()),
+		)
+	} else {
+		zap.L().Info("Save stock price into DB successfully",
+			zap.String("Symbol", stockPrice.Symbol),
 		)
 	}
 }

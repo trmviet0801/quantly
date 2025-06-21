@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/trmviet0801/quantly/usecase"
+	"github.com/trmviet0801/quantly/data"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -94,10 +94,28 @@ func TestSubmitOrder(t *testing.T) {
 	// 	}
 	// }
 
-	portfolioHistory, err := usecase.GetPortfolioHistoryOfAccount("12c5d20e-aa3d-412b-985e-245a927a1be4")
-	if err == nil {
-		fmt.Println(portfolioHistory.String())
-	} else {
-		fmt.Println(err.Error())
+	// portfolioHistory, err := usecase.GetPortfolioHistoryOfAccount("12c5d20e-aa3d-412b-985e-245a927a1be4")
+	// if err == nil {
+	// 	fmt.Println(portfolioHistory.String())
+	// } else {
+	// 	fmt.Println(err.Error())
+	// }
+
+	stocks := data.GetAllUsStock("./res/sp500.csv")
+
+	for _, stock := range stocks {
+		url := fmt.Sprintf("https://finance.yahoo.com/quote/%s", stock.Symbol)
+
+		file, err := os.OpenFile("./res/url.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		if err != nil {
+			fmt.Printf("Error opening file: %v\n", err)
+			return
+		}
+		defer file.Close()
+
+		if _, err := file.WriteString(fmt.Sprintf("{\"url\": \"%s\"},\n", url)); err != nil {
+			fmt.Printf("Error writing to file: %v\n", err)
+			return
+		}
 	}
 }

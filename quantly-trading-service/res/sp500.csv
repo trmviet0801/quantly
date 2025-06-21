@@ -1,0 +1,502 @@
+AAPL,Apple Inc.,United States,,164000,Technology,Consumer Electronics
+NVDA,NVIDIA Corporation,United States,,29600,Technology,Semiconductors
+MSFT,Microsoft Corporation,United States,,228000,Technology,Software - Infrastructure
+AMZN,"Amazon.com, Inc.",United States,,1551000,Consumer Cyclical,Internet Retail
+GOOGL,Alphabet Inc.,United States,,181269,Communication Services,Internet Content & Information
+GOOG,Alphabet Inc.,United States,,181269,Communication Services,Internet Content & Information
+META,"Meta Platforms, Inc.",United States,,72404,Communication Services,Internet Content & Information
+TSLA,"Tesla, Inc.",United States,,140473,Consumer Cyclical,Auto Manufacturers
+AVGO,Broadcom Inc.,United States,,20000,Technology,Semiconductors
+BRK-B,Berkshire Hathaway Inc. New,United States,,396500,Financial Services,Insurance - Diversified
+WMT,Walmart Inc.,United States,,2100000,Consumer Defensive,Discount Stores
+LLY,Eli Lilly and Company,United States,,43000,Healthcare,Drug Manufacturers - General
+JPM,JP Morgan Chase & Co.,United States,,316043,Financial Services,Banks - Diversified
+V,Visa Inc.,United States,,,Financial Services,Credit Services
+MA,Mastercard Incorporated,United States,,33400,Financial Services,Credit Services
+ORCL,Oracle Corporation,United States,,159000,Technology,Software - Infrastructure
+XOM,Exxon Mobil Corporation,United States,,62000,Energy,Oil & Gas Integrated
+UNH,UnitedHealth Group Incorporated,United States,,440000,Healthcare,Healthcare Plans
+COST,Costco Wholesale Corporation,United States,,333000,Consumer Defensive,Discount Stores
+PG,Procter & Gamble Company (The),United States,,108000,Consumer Defensive,Household & Personal Products
+HD,"Home Depot, Inc. (The)",United States,,465000,Consumer Cyclical,Home Improvement Retail
+NFLX,"Netflix, Inc.",United States,,13000,Communication Services,Entertainment
+JNJ,Johnson & Johnson,United States,,131900,Healthcare,Drug Manufacturers - General
+BAC,Bank of America Corporation,United States,,213000,Financial Services,Banks - Diversified
+CRM,"Salesforce, Inc.",United States,,72682,Technology,Software - Application
+ABBV,AbbVie Inc.,United States,,50000,Healthcare,Drug Manufacturers - General
+KO,Coca-Cola Company (The),United States,,79100,Consumer Defensive,Beverages - Non-Alcoholic
+TMUS,"T-Mobile US, Inc.",United States,,67000,Communication Services,Telecom Services
+CVX,Chevron Corporation,United States,,45600,Energy,Oil & Gas Integrated
+MRK,"Merck & Company, Inc.",United States,,70000,Healthcare,Drug Manufacturers - General
+WFC,Wells Fargo & Company,United States,,220167,Financial Services,Banks - Diversified
+CSCO,"Cisco Systems, Inc.",United States,,90400,Technology,Communication Equipment
+ACN,Accenture plc,Ireland,,774000,Technology,Information Technology Services
+NOW,"ServiceNow, Inc.",United States,,22668,Technology,Software - Application
+AXP,American Express Company,United States,,74600,Financial Services,Credit Services
+MCD,McDonald's Corporation,United States,,100000,Consumer Cyclical,Restaurants
+PEP,"Pepsico, Inc.",United States,,318000,Consumer Defensive,Beverages - Non-Alcoholic
+BX,Blackstone Inc.,United States,,4735,Financial Services,Asset Management
+IBM,International Business Machines,United States,,282200,Technology,Information Technology Services
+DIS,Walt Disney Company (The),United States,,173250,Communication Services,Entertainment
+LIN,Linde plc,United Kingdom,,65596,Basic Materials,Specialty Chemicals
+TMO,Thermo Fisher Scientific Inc,United States,,122000,Healthcare,Diagnostics & Research
+MS,Morgan Stanley,United States,,80000,Financial Services,Capital Markets
+ABT,Abbott Laboratories,United States,,114000,Healthcare,Medical Devices
+ADBE,Adobe Inc.,United States,,29945,Technology,Software - Infrastructure
+AMD,"Advanced Micro Devices, Inc.",United States,,26000,Technology,Semiconductors
+PM,Philip Morris International Inc,United States,,82700,Consumer Defensive,Tobacco
+ISRG,"Intuitive Surgical, Inc.",United States,,13676,Healthcare,Medical Instruments & Supplies
+PLTR,Palantir Technologies Inc.,United States,,3892,Technology,Software - Infrastructure
+GE,GE Aerospace,United States,,125000,Industrials,Aerospace & Defense
+INTU,Intuit Inc.,United States,,18800,Technology,Software - Application
+GS,"Goldman Sachs Group, Inc. (The)",United States,,46400,Financial Services,Capital Markets
+CAT,"Caterpillar, Inc.",United States,,113200,Industrials,Farm & Heavy Construction Machinery
+TXN,Texas Instruments Incorporated,United States,,34000,Technology,Semiconductors
+QCOM,QUALCOMM Incorporated,United States,,49000,Technology,Semiconductors
+VZ,Verizon Communications Inc.,United States,,101200,Communication Services,Telecom Services
+BKNG,Booking Holdings Inc. Common St,United States,,24200,Consumer Cyclical,Travel Services
+DHR,Danaher Corporation,United States,,61000,Healthcare,Diagnostics & Research
+T,AT&T Inc.,United States,,143630,Communication Services,Telecom Services
+BLK,"BlackRock, Inc.",United States,,20400,Financial Services,Asset Management
+RTX,RTX Corporation,United States,,185000,Industrials,Aerospace & Defense
+SPGI,S&P Global Inc.,United States,,40450,Financial Services,Financial Data & Stock Exchanges
+PFE,"Pfizer, Inc.",United States,,88000,Healthcare,Drug Manufacturers - General
+HON,Honeywell International Inc.,United States,,95000,Industrials,Conglomerates
+NEE,"NextEra Energy, Inc.",United States,,16800,Utilities,Utilities - Regulated Electric
+CMCSA,Comcast Corporation,United States,,186000,Communication Services,Telecom Services
+ANET,"Arista Networks, Inc.",United States,,4023,Technology,Computer Hardware
+AMGN,Amgen Inc.,United States,,26700,Healthcare,Drug Manufacturers - General
+PGR,Progressive Corporation (The),United States,,61432,Financial Services,Insurance - Property & Casualty
+LOW,"Lowe's Companies, Inc.",United States,,300000,Consumer Cyclical,Home Improvement Retail
+SYK,Stryker Corporation,United States,,52000,Healthcare,Medical Devices
+UNP,Union Pacific Corporation,United States,,30518,Industrials,Railroads
+TJX,"TJX Companies, Inc. (The)",United States,,349000,Consumer Cyclical,Apparel Retail
+KKR,KKR & Co. Inc.,United States,,4490,Financial Services,Asset Management
+SCHW,Charles Schwab Corporation (The,United States,,32100,Financial Services,Capital Markets
+ETN,"Eaton Corporation, PLC",Ireland,,94000,Industrials,Specialty Industrial Machinery
+AMAT,"Applied Materials, Inc.",United States,,35200,Technology,Semiconductor Equipment & Materials
+BA,Boeing Company (The),United States,,171000,Industrials,Aerospace & Defense
+BSX,Boston Scientific Corporation,United States,,48000,Healthcare,Medical Devices
+C,"Citigroup, Inc.",United States,,229000,Financial Services,Banks - Diversified
+UBER,"Uber Technologies, Inc.",United States,,30800,Technology,Software - Application
+COP,ConocoPhillips,United States,,10300,Energy,Oil & Gas E&P
+PANW,"Palo Alto Networks, Inc.",United States,,15289,Technology,Software - Infrastructure
+ADP,"Automatic Data Processing, Inc.",United States,,64000,Technology,Software - Application
+DE,Deere & Company,United States,,83000,Industrials,Farm & Heavy Construction Machinery
+FI,"Fiserv, Inc.",United States,,42000,Technology,Information Technology Services
+BMY,Bristol-Myers Squibb Company,United States,,34100,Healthcare,Drug Manufacturers - General
+LMT,Lockheed Martin Corporation,United States,,122000,Industrials,Aerospace & Defense
+GILD,"Gilead Sciences, Inc.",United States,,18000,Healthcare,Drug Manufacturers - General
+NKE,"Nike, Inc.",United States,,79400,Consumer Cyclical,Footwear & Accessories
+CB,Chubb Limited,Switzerland,,40000,Financial Services,Insurance - Property & Casualty
+UPS,"United Parcel Service, Inc.",United States,,500000,Industrials,Integrated Freight & Logistics
+ADI,"Analog Devices, Inc.",United States,,26000,Technology,Semiconductors
+MMC,"Marsh & McLennan Companies, Inc",United States,,85000,Financial Services,Insurance Brokers
+MDT,Medtronic plc.,Ireland,,95000,Healthcare,Medical Devices
+VRTX,Vertex Pharmaceuticals Incorpor,United States,,5400,Healthcare,Biotechnology
+MU,"Micron Technology, Inc.",United States,,48000,Technology,Semiconductors
+SBUX,Starbucks Corporation,United States,,,Consumer Cyclical,Restaurants
+PLD,"Prologis, Inc.",United States,,2574,Real Estate,REIT - Industrial
+GEV,GE Vernova Inc.,United States,,80000,Utilities,Utilities - Renewable
+LRCX,Lam Research Corporation,United States,,17700,Technology,Semiconductor Equipment & Materials
+MO,"Altria Group, Inc.",United States,,6400,Consumer Defensive,Tobacco
+SO,Southern Company (The),United States,,27819,Utilities,Utilities - Regulated Electric
+EQIX,"Equinix, Inc.",United States,,13151,Real Estate,REIT - Specialty
+CRWD,"CrowdStrike Holdings, Inc.",United States,,9219,Technology,Software - Infrastructure
+PYPL,"PayPal Holdings, Inc.",United States,,27200,Financial Services,Credit Services
+SHW,Sherwin-Williams Company (The),United States,,64088,Basic Materials,Specialty Chemicals
+ICE,Intercontinental Exchange Inc.,United States,,12900,Financial Services,Financial Data & Stock Exchanges
+CME,CME Group Inc.,United States,,3565,Financial Services,Financial Data & Stock Exchanges
+AMT,American Tower Corporation (REI,United States,,5643,Real Estate,REIT - Specialty
+APH,Amphenol Corporation,United States,,95000,Technology,Electronic Components
+ELV,"Elevance Health, Inc.",United States,,104900,Healthcare,Healthcare Plans
+TT,Trane Technologies plc,Ireland,,40000,Industrials,Building Products & Equipment
+MCO,Moody's Corporation,United States,,15776,Financial Services,Financial Data & Stock Exchanges
+CMG,"Chipotle Mexican Grill, Inc.",United States,,125000,Consumer Cyclical,Restaurants
+INTC,Intel Corporation,United States,,124100,Technology,Semiconductors
+KLAC,KLA Corporation,United States,,15000,Technology,Semiconductor Equipment & Materials
+ABNB,"Airbnb, Inc.",United States,,6907,Consumer Cyclical,Travel Services
+DUK,Duke Energy Corporation (Holdin,United States,,27037,Utilities,Utilities - Regulated Electric
+PH,Parker-Hannifin Corporation,United States,,61120,Industrials,Specialty Industrial Machinery
+CDNS,"Cadence Design Systems, Inc.",United States,,12703,Technology,Software - Application
+WM,"Waste Management, Inc.",United States,,48000,Industrials,Waste Management
+DELL,Dell Technologies Inc.,United States,,120000,Technology,Computer Hardware
+MDLZ,"Mondelez International, Inc.",United States,,91000,Consumer Defensive,Confectioners
+MAR,Marriott International,United States,,411000,Consumer Cyclical,Lodging
+MSI,"Motorola Solutions, Inc.",United States,,21000,Technology,Communication Equipment
+WELL,Welltower Inc.,United States,,533,Real Estate,REIT - Healthcare Facilities
+AON,Aon plc,Ireland,,50000,Financial Services,Insurance Brokers
+REGN,"Regeneron Pharmaceuticals, Inc.",United States,,14165,Healthcare,Biotechnology
+CI,The Cigna Group,United States,,70325,Healthcare,Healthcare Plans
+HCA,"HCA Healthcare, Inc.",United States,,220000,Healthcare,Medical Care Facilities
+PNC,"PNC Financial Services Group, I",United States,,53749,Financial Services,Banks - Regional
+ITW,Illinois Tool Works Inc.,United States,,45000,Industrials,Specialty Industrial Machinery
+SNPS,"Synopsys, Inc.",United States,,20300,Technology,Software - Infrastructure
+CTAS,Cintas Corporation,United States,,46500,Industrials,Specialty Business Services
+CL,Colgate-Palmolive Company,United States,,34000,Consumer Defensive,Household & Personal Products
+USB,U.S. Bancorp,United States,,70000,Financial Services,Banks - Regional
+FTNT,"Fortinet, Inc.",United States,,13986,Technology,Software - Infrastructure
+ZTS,Zoetis Inc.,United States,,14100,Healthcare,Drug Manufacturers - Specialty & Generic
+MCK,McKesson Corporation,United States,,45000,Healthcare,Medical Distribution
+GD,General Dynamics Corporation,United States,,100000,Industrials,Aerospace & Defense
+TDG,Transdigm Group Incorporated,United States,,16600,Industrials,Aerospace & Defense
+CEG,Constellation Energy Corporatio,United States,,13871,Utilities,Utilities - Renewable
+AJG,Arthur J. Gallagher & Co.,United States,,51261,Financial Services,Insurance Brokers
+EMR,Emerson Electric Company,United States,,73000,Industrials,Specialty Industrial Machinery
+MMM,3M Company,United States,,85000,Industrials,Conglomerates
+ORLY,"O'Reilly Automotive, Inc.",United States,,92709,Consumer Cyclical,Specialty Retail
+NOC,Northrop Grumman Corporation,United States,,101000,Industrials,Aerospace & Defense
+COF,Capital One Financial Corporati,United States,,52500,Financial Services,Credit Services
+ECL,Ecolab Inc.,United States,,48000,Basic Materials,Specialty Chemicals
+EOG,"EOG Resources, Inc.",United States,,3050,Energy,Oil & Gas E&P
+FDX,FedEx Corporation,United States,,306000,Industrials,Integrated Freight & Logistics
+BDX,"Becton, Dickinson and Company",United States,,70000,Healthcare,Medical Instruments & Supplies
+APD,"Air Products and Chemicals, Inc",United States,,23000,Basic Materials,Specialty Chemicals
+WMB,"Williams Companies, Inc. (The)",United States,,5601,Energy,Oil & Gas Midstream
+SPG,"Simon Property Group, Inc.",United States,,2500,Real Estate,REIT - Retail
+ADSK,"Autodesk, Inc.",United States,,14100,Technology,Software - Application
+RCL,Royal Caribbean Cruises Ltd.,United States,,98100,Consumer Cyclical,Travel Services
+RSG,"Republic Services, Inc.",United States,,41000,Industrials,Waste Management
+CARR,Carrier Global Corporation,United States,,53000,Industrials,Building Products & Equipment
+CSX,CSX Corporation,United States,,23400,Industrials,Railroads
+HLT,Hilton Worldwide Holdings Inc.,United States,,178000,Consumer Cyclical,Lodging
+DLR,"Digital Realty Trust, Inc.",United States,,3664,Real Estate,REIT - Specialty
+TGT,Target Corporation,United States,,415000,Consumer Defensive,Discount Stores
+KMI,"Kinder Morgan, Inc.",United States,,10891,Energy,Oil & Gas Midstream
+OKE,"ONEOK, Inc.",United States,,4775,Energy,Oil & Gas Midstream
+TFC,Truist Financial Corporation,United States,,37867,Financial Services,Banks - Regional
+AFL,AFLAC Incorporated,United States,,12785,Financial Services,Insurance - Life
+GM,General Motors Company,United States,,163000,Consumer Cyclical,Auto Manufacturers
+BK,The Bank of New York Mellon Cor,United States,,52600,Financial Services,Banks - Diversified
+ROP,"Roper Technologies, Inc.",United States,,16800,Technology,Software - Application
+MET,"MetLife, Inc.",United States,,45000,Financial Services,Insurance - Life
+CPRT,"Copart, Inc.",United States,,13086,Industrials,Specialty Business Services
+FCX,"Freeport-McMoRan, Inc.",United States,,27200,Basic Materials,Copper
+CVS,CVS Health Corporation,United States,,219000,Healthcare,Healthcare Plans
+PCAR,PACCAR Inc.,United States,,32400,Industrials,Farm & Heavy Construction Machinery
+SRE,DBA Sempra,United States,,16835,Utilities,Utilities - Diversified
+AZO,"AutoZone, Inc.",United States,,75600,Consumer Cyclical,Specialty Retail
+TRV,"The Travelers Companies, Inc.",United States,,32967,Financial Services,Insurance - Property & Casualty
+NXPI,NXP Semiconductors N.V.,Netherlands,,34200,Technology,Semiconductors
+JCI,Johnson Controls International ,Ireland,,100000,Industrials,Building Products & Equipment
+GWW,"W.W. Grainger, Inc.",United States,,23200,Industrials,Industrial Distribution
+NSC,Norfolk Southern Corporation,United States,,20700,Industrials,Railroads
+PSA,Public Storage,United States,,6200,Real Estate,REIT - Industrial
+SLB,Schlumberger N.V.,United States,,111000,Energy,Oil & Gas Equipment & Services
+AMP,"Ameriprise Financial, Inc.",United States,,13800,Financial Services,Asset Management
+ALL,Allstate Corporation (The),United States,,53000,Financial Services,Insurance - Property & Casualty
+FICO,Fair Isaac Corporation,United States,,3586,Technology,Software - Application
+MNST,Monster Beverage Corporation,United States,,5254,Consumer Defensive,Beverages - Non-Alcoholic
+PAYX,"Paychex, Inc.",United States,,16000,Technology,Software - Application
+CHTR,"Charter Communications, Inc.",United States,,101100,Communication Services,Telecom Services
+AEP,American Electric Power Company,United States,,17250,Utilities,Utilities - Regulated Electric
+ROST,"Ross Stores, Inc.",United States,,108000,Consumer Cyclical,Apparel Retail
+PWR,"Quanta Services, Inc.",United States,,52500,Industrials,Engineering & Construction
+CMI,Cummins Inc.,United States,,75500,Industrials,Specialty Industrial Machinery
+AXON,"Axon Enterprise, Inc.",United States,,3330,Industrials,Aerospace & Defense
+VST,Vistra Corp.,United States,,4870,Utilities,Utilities - Independent Power Producers
+URI,"United Rentals, Inc.",United States,,26300,Industrials,Rental & Leasing Services
+MSCI,MSCI Inc.,United States,,6118,Financial Services,Financial Data & Stock Exchanges
+LULU,lululemon athletica inc.,Canada,,38000,Consumer Cyclical,Apparel Retail
+O,Realty Income Corporation,United States,,418,Real Estate,REIT - Retail
+PSX,Phillips 66,United States,,14000,Energy,Oil & Gas Refining & Marketing
+AIG,"American International Group, I",United States,,25000,Financial Services,Insurance - Diversified
+FANG,"Diamondback Energy, Inc.",United States,,1023,Energy,Oil & Gas E&P
+D,"Dominion Energy, Inc.",United States,,17700,Utilities,Utilities - Regulated Electric
+HWM,Howmet Aerospace Inc.,United States,,23200,Industrials,Aerospace & Defense
+DHI,"D.R. Horton, Inc.",United States,,,Consumer Cyclical,Residential Construction
+KR,Kroger Company (The),United States,,414000,Consumer Defensive,Grocery Stores
+NDAQ,"Nasdaq, Inc.",United States,,9120,Financial Services,Financial Data & Stock Exchanges
+OXY,Occidental Petroleum Corporatio,United States,,12570,Energy,Oil & Gas E&P
+EW,Edwards Lifesciences Corporatio,United States,,19800,Healthcare,Medical Devices
+COR,"Cencora, Inc.",United States,,46000,Healthcare,Medical Distribution
+KDP,Keurig Dr Pepper Inc.,United States,,28100,Consumer Defensive,Beverages - Non-Alcoholic
+FIS,Fidelity National Information S,United States,,60000,Technology,Information Technology Services
+KMB,Kimberly-Clark Corporation,United States,,41000,Consumer Defensive,Household & Personal Products
+NEM,Newmont Corporation,United States,,21700,Basic Materials,Gold
+DFS,Discover Financial Services,United States,,21100,Financial Services,Credit Services
+PCG,Pacific Gas & Electric Co.,United States,,28010,Utilities,Utilities - Regulated Electric
+TEL,TE Connectivity plc,Ireland,,87000,Technology,Electronic Components
+MPC,Marathon Petroleum Corporation,United States,,18200,Energy,Oil & Gas Refining & Marketing
+FAST,Fastenal Company,United States,,20894,Industrials,Industrial Distribution
+AME,"AMETEK, Inc.",United States,,21500,Industrials,Specialty Industrial Machinery
+PEG,Public Service Enterprise Group,United States,,12543,Utilities,Utilities - Regulated Electric
+PRU,"Prudential Financial, Inc.",United States,,40366,Financial Services,Insurance - Life
+KVUE,Kenvue Inc.,United States,,22000,Consumer Defensive,Household & Personal Products
+STZ,"Constellation Brands, Inc.",United States,,10600,Consumer Defensive,Beverages - Brewers
+GLW,Corning Incorporated,United States,,49800,Technology,Electronic Components
+LHX,"L3Harris Technologies, Inc.",United States,,50000,Industrials,Aerospace & Defense
+GRMN,Garmin Ltd.,Switzerland,,19900,Technology,Scientific & Technical Instruments
+BKR,Baker Hughes Company,United States,,57000,Energy,Oil & Gas Equipment & Services
+CBRE,CBRE Group Inc,United States,,130000,Real Estate,Real Estate Services
+CTVA,"Corteva, Inc.",United States,,22500,Basic Materials,Agricultural Inputs
+HES,Hess Corporation,United States,,1756,Energy,Oil & Gas E&P
+CCI,Crown Castle Inc.,United States,,4700,Real Estate,REIT - Specialty
+DAL,"Delta Air Lines, Inc.",United States,,100000,Industrials,Airlines
+CTSH,Cognizant Technology Solutions ,United States,,340100,Technology,Information Technology Services
+F,Ford Motor Company,United States,,177000,Consumer Cyclical,Auto Manufacturers
+VRSK,"Verisk Analytics, Inc.",United States,,7500,Industrials,Consulting Services
+EA,Electronic Arts Inc.,United States,,13700,Communication Services,Electronic Gaming & Multimedia
+ODFL,"Old Dominion Freight Line, Inc.",United States,,22686,Industrials,Trucking
+XEL,Xcel Energy Inc.,United States,,11311,Utilities,Utilities - Regulated Electric
+TRGP,"Targa Resources, Inc.",United States,,3182,Energy,Oil & Gas Midstream
+A,"Agilent Technologies, Inc.",United States,,17400,Healthcare,Diagnostics & Research
+IT,"Gartner, Inc.",United States,,20990,Technology,Information Technology Services
+LVS,Las Vegas Sands Corp.,United States,,38400,Consumer Cyclical,Resorts & Casinos
+SYY,Sysco Corporation,United States,,76000,Consumer Defensive,Food Distribution
+VLO,Valero Energy Corporation,United States,,9886,Energy,Oil & Gas Refining & Marketing
+OTIS,Otis Worldwide Corporation,United States,,71000,Industrials,Specialty Industrial Machinery
+LEN,Lennar Corporation,United States,,12284,Consumer Cyclical,Residential Construction
+EXC,Exelon Corporation,United States,,19962,Utilities,Utilities - Regulated Electric
+IR,Ingersoll Rand Inc.,United States,,18000,Industrials,Specialty Industrial Machinery
+YUM,"Yum! Brands, Inc.",United States,,35000,Consumer Cyclical,Restaurants
+KHC,The Kraft Heinz Company,United States,,36000,Consumer Defensive,Packaged Foods
+GEHC,GE HealthCare Technologies Inc.,United States,,51000,Healthcare,Health Information Services
+IQV,"IQVIA Holdings, Inc.",United States,,88000,Healthcare,Diagnostics & Research
+GIS,"General Mills, Inc.",United States,,34000,Consumer Defensive,Packaged Foods
+CCL,Carnival Corporation,United States,,106000,Consumer Cyclical,Travel Services
+RMD,ResMed Inc.,United States,,,Healthcare,Medical Instruments & Supplies
+VMC,Vulcan Materials Company (Holdi,United States,,10961,Basic Materials,Building Materials
+HSY,The Hershey Company,United States,,18650,Consumer Defensive,Confectioners
+ACGL,Arch Capital Group Ltd.,Bermuda,,6400,Financial Services,Insurance - Diversified
+IDXX,"IDEXX Laboratories, Inc.",United States,,11000,Healthcare,Diagnostics & Research
+WAB,Westinghouse Air Brake Technolo,United States,,29000,Industrials,Railroads
+ROK,"Rockwell Automation, Inc.",United States,,27000,Industrials,Specialty Industrial Machinery
+MLM,"Martin Marietta Materials, Inc.",United States,,9400,Basic Materials,Building Materials
+EXR,Extra Space Storage Inc,United States,,7618,Real Estate,REIT - Industrial
+DD,"DuPont de Nemours, Inc.",United States,,24000,Basic Materials,Specialty Chemicals
+ETR,Entergy Corporation,United States,,12000,Utilities,Utilities - Regulated Electric
+DECK,Deckers Outdoor Corporation,United States,,4800,Consumer Cyclical,Footwear & Accessories
+EFX,"Equifax, Inc.",United States,,15000,Industrials,Consulting Services
+UAL,"United Airlines Holdings, Inc.",United States,,106500,Industrials,Airlines
+WTW,Willis Towers Watson Public Lim,United Kingdom,,48000,Financial Services,Insurance Brokers
+TTWO,"Take-Two Interactive Software, ",United States,,12371,Communication Services,Electronic Gaming & Multimedia
+HIG,Hartford Financial Services Gro,United States,,18700,Financial Services,Insurance - Property & Casualty
+RJF,"Raymond James Financial, Inc.",United States,,,Financial Services,Asset Management
+AVB,"AvalonBay Communities, Inc.",United States,,2978,Real Estate,REIT - Residential
+MTB,M&T Bank Corporation,United States,,21986,Financial Services,Banks - Regional
+DXCM,"DexCom, Inc.",United States,,9500,Healthcare,Medical Devices
+ED,"Consolidated Edison, Inc.",United States,,14592,Utilities,Utilities - Regulated Electric
+EBAY,eBay Inc.,United States,,12300,Consumer Cyclical,Internet Retail
+HPQ,HP Inc.,United States,,58000,Technology,Computer Hardware
+IRM,Iron Mountain Incorporated (Del,United States,,27000,Real Estate,REIT - Specialty
+EIX,Edison International,United States,,14375,Utilities,Utilities - Regulated Electric
+LYV,"Live Nation Entertainment, Inc.",United States,,14700,Communication Services,Entertainment
+VICI,VICI Properties Inc.,United States,,28,Real Estate,REIT - Diversified
+CNC,Centene Corporation,United States,,67700,Healthcare,Healthcare Plans
+WEC,"WEC Energy Group, Inc.",United States,,7000,Utilities,Utilities - Regulated Electric
+MCHP,Microchip Technology Incorporat,United States,,22300,Technology,Semiconductors
+HUM,Humana Inc.,United States,,67600,Healthcare,Healthcare Plans
+ANSS,"ANSYS, Inc.",United States,,6400,Technology,Software - Application
+BRO,"Brown & Brown, Inc.",United States,,16152,Financial Services,Insurance Brokers
+CSGP,"CoStar Group, Inc.",United States,,6450,Real Estate,Real Estate Services
+MPWR,"Monolithic Power Systems, Inc.",United States,,3564,Technology,Semiconductors
+GDDY,GoDaddy Inc.,United States,,6159,Technology,Software - Infrastructure
+TSCO,Tractor Supply Company,United States,,50000,Consumer Cyclical,Specialty Retail
+STT,State Street Corporation,United States,,53000,Financial Services,Asset Management
+CAH,"Cardinal Health, Inc.",United States,,47922,Healthcare,Medical Distribution
+GPN,Global Payments Inc.,United States,,27000,Industrials,Specialty Business Services
+FITB,Fifth Third Bancorp,United States,,18579,Financial Services,Banks - Regional
+XYL,Xylem Inc.,United States,,23000,Industrials,Specialty Industrial Machinery
+HPE,Hewlett Packard Enterprise Comp,United States,,62000,Technology,Communication Equipment
+KEYS,Keysight Technologies Inc.,United States,,15400,Technology,Scientific & Technical Instruments
+DOW,Dow Inc.,United States,,35900,Basic Materials,Chemicals
+EQR,Equity Residential,United States,,2400,Real Estate,REIT - Residential
+ON,ON Semiconductor Corporation,United States,,30000,Technology,Semiconductors
+PPG,"PPG Industries, Inc.",United States,,53000,Basic Materials,Specialty Chemicals
+K,Kellanova,United States,,23000,Consumer Defensive,Packaged Foods
+SW,Smurfit WestRock plc,Ireland,,100000,Consumer Cyclical,Packaging & Containers
+NUE,Nucor Corporation,United States,,32000,Basic Materials,Steel
+EL,"Estee Lauder Companies, Inc. (T",United States,,44020,Consumer Defensive,Household & Personal Products
+BR,"Broadridge Financial Solutions,",United States,,14000,Technology,Information Technology Services
+WBD,"Warner Bros. Discovery, Inc. - ",United States,,35300,Communication Services,Entertainment
+TPL,Texas Pacific Land Corporation,United States,,100,Energy,Oil & Gas E&P
+CHD,"Church & Dwight Company, Inc.",United States,,5550,Consumer Defensive,Household & Personal Products
+MTD,"Mettler-Toledo International, I",United States,,16000,Healthcare,Diagnostics & Research
+DOV,Dover Corporation,United States,,25000,Industrials,Specialty Industrial Machinery
+TYL,"Tyler Technologies, Inc.",United States,,7386,Technology,Software - Application
+FTV,Fortive Corporation,United States,,18000,Technology,Scientific & Technical Instruments
+TROW,"T. Rowe Price Group, Inc.",United States,,8104,Financial Services,Asset Management
+VLTO,Veralto Corp,United States,,16000,Industrials,Pollution & Treatment Controls
+EQT,EQT Corporation,United States,,881,Energy,Oil & Gas E&P
+SYF,Synchrony Financial,United States,,20000,Financial Services,Credit Services
+NVR,"NVR, Inc.",United States,,6300,Consumer Cyclical,Residential Construction
+DTE,DTE Energy Company,United States,,9412,Utilities,Utilities - Regulated Electric
+VTR,"Ventas, Inc.",United States,,486,Real Estate,REIT - Healthcare Facilities
+AWK,"American Water Works Company, I",United States,,6500,Utilities,Utilities - Regulated Water
+ADM,Archer-Daniels-Midland Company,United States,,40213,Consumer Defensive,Farm Products
+NTAP,"NetApp, Inc.",United States,,11800,Technology,Computer Hardware
+WST,"West Pharmaceutical Services, I",United States,,10600,Healthcare,Medical Instruments & Supplies
+CPAY,"Corpay, Inc.",United States,,10500,Technology,Software - Infrastructure
+PPL,PPL Corporation,United States,,6629,Utilities,Utilities - Regulated Electric
+LYB,LyondellBasell Industries NV,United States,,20000,Basic Materials,Specialty Chemicals
+AEE,Ameren Corporation,United States,,9372,Utilities,Utilities - Regulated Electric
+EXPE,"Expedia Group, Inc.",United States,,17100,Consumer Cyclical,Travel Services
+HBAN,Huntington Bancshares Incorpora,United States,,19896,Financial Services,Banks - Regional
+CDW,CDW Corporation,United States,,15100,Technology,Information Technology Services
+FE,FirstEnergy Corp.,United States,,12042,Utilities,Utilities - Regulated Electric
+HUBB,Hubbell Inc,United States,,18000,Industrials,Electrical Equipment & Parts
+HAL,Halliburton Company,United States,,48000,Energy,Oil & Gas Equipment & Services
+ROL,"Rollins, Inc.",United States,,20000,Consumer Cyclical,Personal Services
+PHM,"PulteGroup, Inc.",United States,,6382,Consumer Cyclical,Residential Construction
+CINF,Cincinnati Financial Corporatio,United States,,5426,Financial Services,Insurance - Property & Casualty
+PTC,PTC Inc.,United States,,7000,Technology,Software - Application
+WRB,W.R. Berkley Corporation,United States,,8329,Financial Services,Insurance - Property & Casualty
+DRI,"Darden Restaurants, Inc.",United States,,191105,Consumer Cyclical,Restaurants
+FOXA,Fox Corporation,United States,,10200,Communication Services,Entertainment
+FOX,Fox Corporation,United States,,10200,Communication Services,Entertainment
+IFF,International Flavors & Fragran,United States,,21500,Basic Materials,Specialty Chemicals
+SBAC,SBA Communications Corporation,United States,,1787,Real Estate,REIT - Specialty
+WAT,Waters Corporation,United States,,7900,Healthcare,Diagnostics & Research
+ERIE,Erie Indemnity Company,United States,,6481,Financial Services,Insurance Brokers
+TDY,Teledyne Technologies Incorpora,United States,,14900,Technology,Scientific & Technical Instruments
+ATO,Atmos Energy Corporation,United States,,5019,Utilities,Utilities - Regulated Gas
+RF,Regions Financial Corporation,United States,,20101,Financial Services,Banks - Regional
+BIIB,Biogen Inc.,United States,,7570,Healthcare,Drug Manufacturers - General
+ZBH,"Zimmer Biomet Holdings, Inc.",United States,,18000,Healthcare,Medical Devices
+CNP,"CenterPoint Energy, Inc (Holdin",United States,,8827,Utilities,Utilities - Regulated Electric
+MKC,"McCormick & Company, Incorporat",United States,,13800,Consumer Defensive,Packaged Foods
+ES,Eversource Energy (D/B/A),United States,,10000,Utilities,Utilities - Regulated Electric
+WDC,Western Digital Corporation,United States,,51000,Technology,Computer Hardware
+TSN,"Tyson Foods, Inc.",United States,,138000,Consumer Defensive,Farm Products
+TER,"Teradyne, Inc.",United States,,6400,Technology,Semiconductor Equipment & Materials
+STE,STERIS plc (Ireland),United States,,18000,Healthcare,Medical Devices
+PKG,Packaging Corporation of Americ,United States,,14900,Consumer Cyclical,Packaging & Containers
+CLX,Clorox Company (The),United States,,7400,Consumer Defensive,Household & Personal Products
+NTRS,Northern Trust Corporation,United States,,23300,Financial Services,Asset Management
+ZBRA,Zebra Technologies Corporation,United States,,9750,Technology,Communication Equipment
+DVN,Devon Energy Corporation,United States,,1900,Energy,Oil & Gas E&P
+CBOE,"Cboe Global Markets, Inc.",United States,,1647,Financial Services,Financial Data & Stock Exchanges
+WY,Weyerhaeuser Company,United States,,9300,Real Estate,REIT - Specialty
+LUV,Southwest Airlines Company,United States,,73463,Industrials,Airlines
+ULTA,"Ulta Beauty, Inc.",United States,,20000,Consumer Cyclical,Specialty Retail
+CMS,CMS Energy Corporation,United States,,8356,Utilities,Utilities - Regulated Electric
+INVH,Invitation Homes Inc.,United States,,1555,Real Estate,REIT - Residential
+FSLR,"First Solar, Inc.",United States,,6700,Technology,Solar
+BF-B,Brown Forman Inc,United States,,5700,Consumer Defensive,Beverages - Wineries & Distilleries
+LDOS,"Leidos Holdings, Inc.",United States,,47000,Technology,Information Technology Services
+CFG,"Citizens Financial Group, Inc.",United States,,17329,Financial Services,Banks - Regional
+LH,Labcorp Holdings Inc.,United States,,67000,Healthcare,Diagnostics & Research
+VRSN,"VeriSign, Inc.",United States,,907,Technology,Software - Infrastructure
+IP,International Paper Company,United States,,39000,Consumer Cyclical,Packaging & Containers
+ESS,"Essex Property Trust, Inc.",United States,,1747,Real Estate,REIT - Residential
+PODD,Insulet Corporation,United States,,3000,Healthcare,Medical Devices
+COO,"The Cooper Companies, Inc.",United States,,15000,Healthcare,Medical Instruments & Supplies
+SMCI,"Super Micro Computer, Inc.",United States,,,Technology,Computer Hardware
+STX,Seagate Technology Holdings PLC,Singapore,,30000,Technology,Computer Hardware
+MAA,Mid-America Apartment Communiti,United States,,2427,Real Estate,REIT - Residential
+FDS,FactSet Research Systems Inc.,United States,,12398,Financial Services,Financial Data & Stock Exchanges
+NRG,"NRG Energy, Inc.",United States,,18131,Utilities,Utilities - Independent Power Producers
+BBY,"Best Buy Co., Inc.",United States,,85000,Consumer Cyclical,Specialty Retail
+SNA,Snap-On Incorporated,United States,,13200,Industrials,Tools & Accessories
+L,Loews Corporation,United States,,12280,Financial Services,Insurance - Property & Casualty
+PFG,Principal Financial Group Inc,United States,,19800,Financial Services,Asset Management
+STLD,"Steel Dynamics, Inc.",United States,,12600,Basic Materials,Steel
+TRMB,Trimble Inc.,United States,,12700,Technology,Scientific & Technical Instruments
+OMC,Omnicom Group Inc.,United States,,75900,Communication Services,Advertising Agencies
+CTRA,Coterra Energy Inc.,United States,,894,Energy,Oil & Gas E&P
+HRL,Hormel Foods Corporation,United States,,20000,Consumer Defensive,Packaged Foods
+ARE,Alexandria Real Estate Equities,United States,,568,Real Estate,REIT - Office
+BLDR,"Builders FirstSource, Inc.",United States,,29000,Industrials,Building Products & Equipment
+JBHT,"J.B. Hunt Transport Services, I",United States,,34718,Industrials,Integrated Freight & Logistics
+GEN,Gen Digital Inc.,United States,,3400,Technology,Software - Infrastructure
+DGX,Quest Diagnostics Incorporated,United States,,50000,Healthcare,Diagnostics & Research
+KEY,KeyCorp,United States,,16734,Financial Services,Banks - Regional
+NI,NiSource Inc,United States,,7364,Utilities,Utilities - Regulated Gas
+MOH,Molina Healthcare Inc,United States,,18000,Healthcare,Healthcare Plans
+PNR,Pentair plc.,United Kingdom,,10500,Industrials,Specialty Industrial Machinery
+J,Jacobs Solutions Inc.,United States,,60000,Industrials,Engineering & Construction
+DG,Dollar General Corporation,United States,,185800,Consumer Defensive,Discount Stores
+BALL,Ball Corporation,United States,,21000,Consumer Cyclical,Packaging & Containers
+NWS,News Corporation,United States,,23900,Communication Services,Entertainment
+NWSA,News Corporation,United States,,23900,Communication Services,Entertainment
+UDR,"UDR, Inc.",United States,,1397,Real Estate,REIT - Residential
+HOLX,"Hologic, Inc.",United States,,6990,Healthcare,Medical Instruments & Supplies
+JBL,Jabil Inc.,United States,,138000,Technology,Electronic Components
+GPC,Genuine Parts Company,United States,,60000,Consumer Cyclical,Auto Parts
+IEX,IDEX Corporation,United States,,8800,Industrials,Specialty Industrial Machinery
+MAS,Masco Corporation,United States,,18000,Industrials,Building Products & Equipment
+KIM,Kimco Realty Corporation (HC),United States,,660,Real Estate,REIT - Retail
+ALGN,"Align Technology, Inc.",United States,,21690,Healthcare,Medical Instruments & Supplies
+DLTR,"Dollar Tree, Inc.",United States,,65894,Consumer Defensive,Discount Stores
+EXPD,Expeditors International of Was,United States,,18690,Industrials,Integrated Freight & Logistics
+EG,"Everest Group, Ltd.",Bermuda,,2844,Financial Services,Insurance - Reinsurance
+MRNA,"Moderna, Inc.",United States,,5600,Healthcare,Biotechnology
+LNT,Alliant Energy Corporation,United States,,3281,Utilities,Utilities - Regulated Electric
+AVY,Avery Dennison Corporation,United States,,35000,Consumer Cyclical,Packaging & Containers
+BAX,Baxter International Inc.,United States,,60000,Healthcare,Medical Instruments & Supplies
+TPR,"Tapestry, Inc.",United States,,12500,Consumer Cyclical,Luxury Goods
+VTRS,Viatris Inc.,United States,,32000,Healthcare,Drug Manufacturers - Specialty & Generic
+CF,"CF Industries Holdings, Inc.",United States,,2700,Basic Materials,Agricultural Inputs
+FFIV,"F5, Inc.",United States,,,Technology,Software - Infrastructure
+DPZ,Domino's Pizza Inc,United States,,6500,Consumer Cyclical,Restaurants
+AKAM,"Akamai Technologies, Inc.",United States,,10947,Technology,Software - Infrastructure
+RL,Ralph Lauren Corporation,United States,,14800,Consumer Cyclical,Apparel Manufacturing
+TXT,Textron Inc.,United States,,35000,Industrials,Aerospace & Defense
+SWKS,"Skyworks Solutions, Inc.",United States,,9750,Technology,Semiconductors
+EVRG,"Evergy, Inc.",United States,,4658,Utilities,Utilities - Regulated Electric
+EPAM,"EPAM Systems, Inc.",United States,,53250,Technology,Information Technology Services
+DOC,"Healthpeak Properties, Inc.",United States,,193,Real Estate,REIT - Healthcare Facilities
+APTV,Aptiv PLC,Ireland,,154000,Consumer Cyclical,Auto Parts
+RVTY,"Revvity, Inc.",United States,,11000,Healthcare,Diagnostics & Research
+AMCR,Amcor plc,Switzerland,,41000,Consumer Cyclical,Packaging & Containers
+REG,Regency Centers Corporation,United States,,492,Real Estate,REIT - Retail
+POOL,Pool Corporation,United States,,6000,Industrials,Industrial Distribution
+INCY,Incyte Corporation,United States,,2524,Healthcare,Biotechnology
+BXP,"BXP, Inc.",United States,,836,Real Estate,REIT - Office
+KMX,CarMax Inc,United States,,30000,Consumer Cyclical,Auto & Truck Dealerships
+CAG,"ConAgra Brands, Inc.",United States,,18500,Consumer Defensive,Packaged Foods
+HST,"Host Hotels & Resorts, Inc.",United States,,163,Real Estate,REIT - Hotel & Motel
+JKHY,"Jack Henry & Associates, Inc.",United States,,7170,Technology,Information Technology Services
+SWK,"Stanley Black & Decker, Inc.",United States,,50500,Industrials,Tools & Accessories
+DVA,DaVita Inc.,United States,,70000,Healthcare,Medical Care Facilities
+CPB,The Campbell's Company,United States,,14400,Consumer Defensive,Packaged Foods
+CHRW,"C.H. Robinson Worldwide, Inc.",United States,,14537,Industrials,Integrated Freight & Logistics
+JNPR,"Juniper Networks, Inc.",United States,,11144,Technology,Communication Equipment
+CPT,Camden Property Trust,United States,,1640,Real Estate,REIT - Residential
+TAP,Molson Coors Beverage Company,United States,,16500,Consumer Defensive,Beverages - Brewers
+NDSN,Nordson Corporation,United States,,7700,Industrials,Specialty Industrial Machinery
+PAYC,"Paycom Software, Inc.",United States,,7308,Technology,Software - Application
+UHS,"Universal Health Services, Inc.",United States,,96700,Healthcare,Medical Care Facilities
+NCLH,Norwegian Cruise Line Holdings ,United States,,41000,Consumer Cyclical,Travel Services
+DAY,"Dayforce, Inc.",United States,,9084,Technology,Software - Application
+SJM,The J.M. Smucker Company,United States,,9000,Consumer Defensive,Packaged Foods
+TECH,Bio-Techne Corp,United States,,3100,Healthcare,Biotechnology
+SOLV,Solventum Corporation,United States,,,Healthcare,Health Information Services
+ALLE,Allegion plc,Ireland,,12200,Industrials,Security & Protection Services
+BG,Bunge Limited,United States,,23000,Consumer Defensive,Farm Products
+AIZ,"Assurant, Inc.",United States,,13600,Financial Services,Insurance - Property & Casualty
+IPG,"Interpublic Group of Companies,",United States,,55100,Communication Services,Advertising Agencies
+BEN,"Franklin Resources, Inc.",United States,,10200,Financial Services,Asset Management
+EMN,Eastman Chemical Company,United States,,14000,Basic Materials,Specialty Chemicals
+ALB,Albemarle Corporation,United States,,9000,Basic Materials,Specialty Chemicals
+MGM,MGM Resorts International,United States,,58000,Consumer Cyclical,Resorts & Casinos
+AOS,A.O. Smith Corporation,United States,,12000,Industrials,Specialty Industrial Machinery
+WYNN,"Wynn Resorts, Limited",United States,,27800,Consumer Cyclical,Resorts & Casinos
+PNW,Pinnacle West Capital Corporati,United States,,6133,Utilities,Utilities - Regulated Electric
+ENPH,"Enphase Energy, Inc.",United States,,3157,Technology,Solar
+LKQ,LKQ Corporation,United States,,49000,Consumer Cyclical,Auto Parts
+FRT,Federal Realty Investment Trust,United States,,297,Real Estate,REIT - Retail
+CRL,Charles River Laboratories Inte,United States,,20400,Healthcare,Diagnostics & Research
+GNRC,Generac Holdlings Inc.,United States,,8315,Industrials,Specialty Industrial Machinery
+AES,The AES Corporation,United States,,9600,Utilities,Utilities - Diversified
+GL,Globe Life Inc.,United States,,3636,Financial Services,Insurance - Life
+LW,"Lamb Weston Holdings, Inc.",United States,,10700,Consumer Defensive,Packaged Foods
+HSIC,"Henry Schein, Inc.",United States,,26000,Healthcare,Medical Distribution
+MKTX,"MarketAxess Holdings, Inc.",United States,,881,Financial Services,Capital Markets
+MTCH,"Match Group, Inc.",United States,,2600,Communication Services,Internet Content & Information
+TFX,Teleflex Incorporated,United States,,14500,Healthcare,Medical Instruments & Supplies
+WBA,"Walgreens Boots Alliance, Inc.",United States,,193000,Healthcare,Pharmaceutical Retailers
+HAS,"Hasbro, Inc.",United States,,5502,Consumer Cyclical,Leisure
+IVZ,Invesco Ltd,United States,,8524,Financial Services,Asset Management
+APA,APA Corporation,United States,,2271,Energy,Oil & Gas E&P
+MOS,Mosaic Company (The),United States,,14049,Basic Materials,Agricultural Inputs
+PARA,Paramount Global,United States,,21900,Communication Services,Entertainment
+MHK,"Mohawk Industries, Inc.",United States,,43300,Consumer Cyclical,"Furnishings, Fixtures & Appliances"
+CE,Celanese Corporation,United States,,12400,Basic Materials,Chemicals
+HII,"Huntington Ingalls Industries, ",United States,,44000,Industrials,Aerospace & Defense
+CZR,"Caesars Entertainment, Inc.",United States,,51000,Consumer Cyclical,Resorts & Casinos
+BWA,BorgWarner Inc.,United States,,39900,Consumer Cyclical,Auto Parts
+QRVO,"Qorvo, Inc.",United States,,8700,Technology,Semiconductors
+FMC,FMC Corporation,United States,,5800,Basic Materials,Agricultural Inputs
+AMTM,"Amentum Holdings, Inc.",United States,,,Industrials,Specialty Business Services

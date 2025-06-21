@@ -1,12 +1,12 @@
 CREATE TABLE `users` (
-  `user_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_id` VARCHAR(64) NOT NULL PRIMARY KEY,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE `accounts` (
-  `account_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `user_id` BIGINT UNSIGNED,
+  `account_id` VARCHAR(64) NOT NULL PRIMARY KEY,
+  `user_id` VARCHAR(64) NOT NULL,
   `account_number` VARCHAR(255),
   `status` VARCHAR(50),
   `crypto_status` VARCHAR(50),
@@ -28,7 +28,7 @@ CREATE TABLE `accounts` (
 
 CREATE TABLE `kyc_results` (
   `kyc_result_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `account_id` BIGINT UNSIGNED,
+  `account_id` VARCHAR(64) NOT NULL,
   `status` VARCHAR(50),
   `internal_status` VARCHAR(50),
   `timestamp` DATETIME
@@ -36,7 +36,7 @@ CREATE TABLE `kyc_results` (
 
 CREATE TABLE `contacts` (
   `contact_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `account_id` BIGINT UNSIGNED,
+  `account_id` VARCHAR(64) NOT NULL,
   `email_address` VARCHAR(255),
   `phone_number` VARCHAR(50),
   `street_address` JSON,
@@ -51,7 +51,7 @@ CREATE TABLE `contacts` (
 
 CREATE TABLE `trading_configurations` (
   `trading_configuration_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `account_id` BIGINT UNSIGNED,
+  `account_id` VARCHAR(64) NOT NULL,
   `dtbp_check` VARCHAR(50),
   `no_shorting` TINYINT(1),
   `fractional_trading` TINYINT(1),
@@ -60,7 +60,7 @@ CREATE TABLE `trading_configurations` (
 
 CREATE TABLE `trusted_contacts` (
   `trusted_contact_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `account_id` BIGINT UNSIGNED,
+  `account_id` VARCHAR(64) NOT NULL,
   `given_name` VARCHAR(100),
   `family_name` VARCHAR(100),
   `email_address` VARCHAR(255)
@@ -68,7 +68,7 @@ CREATE TABLE `trusted_contacts` (
 
 CREATE TABLE `disclosures` (
   `disclosures_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `account_id` BIGINT UNSIGNED,
+  `account_id` VARCHAR(64) NOT NULL,
   `is_control_person` TINYINT(1),
   `is_affiliated_exchange_or_finra` TINYINT(1),
   `is_politically_exposed` TINYINT(1),
@@ -77,7 +77,7 @@ CREATE TABLE `disclosures` (
 
 CREATE TABLE `identities` (
   `identity_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `account_id` BIGINT UNSIGNED,
+  `account_id` VARCHAR(64) NOT NULL,
   `tax_id` VARCHAR(100),
   `tax_id_type` VARCHAR(50),
   `country_of_citizenship` VARCHAR(100),
@@ -88,8 +88,8 @@ CREATE TABLE `identities` (
 );
 
 CREATE TABLE `orders` (
-  `order_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `account_id` BIGINT UNSIGNED,
+  `order_id` VARCHAR(64) NOT NULL PRIMARY KEY,
+  `account_id` VARCHAR(64) NOT NULL,
   `symbol` VARCHAR(10),
   `qty` DECIMAL(20,4),
   `notional` DECIMAL(30,4),
@@ -106,15 +106,15 @@ CREATE TABLE `orders` (
 );
 
 CREATE TABLE `stop_losses` (
-  `stop_loss_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `order_id` BIGINT UNSIGNED,
+  `stop_loss_id` VARCHAR(64) NOT NULL PRIMARY KEY,
+  `order_id` VARCHAR(64) NOT NULL,
   `stop_price` DECIMAL(30,4),
   `limit_price` DECIMAL(30,4)
 );
 
 CREATE TABLE `take_profits` (
-  `take_profit_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `order_id` BIGINT UNSIGNED,
+  `take_profit_id` VARCHAR(64) NOT NULL PRIMARY KEY,
+  `order_id` VARCHAR(64) NOT NULL,
   `limit_price` DECIMAL(30, 4)
 );
 
@@ -130,12 +130,12 @@ CREATE TABLE `trade_signals` (
   `quant` VARCHAR(50),
   `timestamp` DATETIME,
   `quant_model_id` BIGINT UNSIGNED,
-  `account_id` BIGINT UNSIGNED
+  `account_id` VARCHAR(64) NOT NULL
 );
 
 CREATE TABLE `positions` (
-  `position_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `account_id` BIGINT UNSIGNED,
+  `position_id` VARCHAR(64) NOT NULL PRIMARY KEY,
+  `account_id` VARCHAR(64) NOT NULL,
   `asset_id` VARCHAR(50),
   `symbol` VARCHAR(10),
   `exchange` VARCHAR(50),
@@ -158,14 +158,15 @@ CREATE TABLE `positions` (
 
 
 CREATE TABLE `portfolio` (
-  `portfolio_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `account_id` BIGINT UNSIGNED,
+  `portfolio_id` VARCHAR(64) NOT NULL PRIMARY KEY,
+  `account_id` VARCHAR(64) NOT NULL,
   `current_value` VARCHAR(20),
   `profit_loss` VARCHAR(20)
 );
 
 CREATE TABLE `notifications` (
-  `userid` BIGINT UNSIGNED,
+  `notification_id` BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `userid` VARCHAR(64) NOT NULL,
   `type` VARCHAR(50),
   `content` TEXT
 );

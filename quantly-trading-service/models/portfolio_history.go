@@ -11,7 +11,7 @@ type PortfolioHistory struct {
 	AccountId     string                  `json:"account_id" gorm:"primaryKey;type:varchar(64)"`
 	Timestamp     customtype.Int64Slice   `json:"timestamp" gorm:"type:json"`
 	Equity        customtype.Float64Slice `json:"equity" gorm:"type:json"`
-	ProfitLoss    customtype.Float64Slice `json:"profit_loss"gorm:"type:json"`
+	ProfitLoss    customtype.Float64Slice `json:"profit_loss" gorm:"type:json"`
 	ProfitLossPct customtype.Float64Slice `json:"profit_loss_pct" gorm:"type:json"`
 	BaseValue     float64                 `json:"base_value"`
 	BaseValueAsof string                  `json:"base_value_asof"`

@@ -195,7 +195,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="dLzqiW4tQd2JQKK8cK3W-7" value="Trigger crawling&amp;nbsp;&lt;div&gt;requset each 1 hour&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="-440" y="700" width="130" height="40" as="geometry" />
+          <mxGeometry x="-510" y="500" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="dLzqiW4tQd2JQKK8cK3W-8" value="stock data stored in&amp;nbsp;&lt;div&gt;redis&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;after returned&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;from brightData&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="-30" y="620" width="130" height="60" as="geometry" />
