@@ -24,10 +24,13 @@ func Test(t *testing.T) {
 		return
 	}
 
-	snapshotId, err := usecase.TriggerFullStockCrawl()
-	if err != nil {
-		fmt.Println("failed")
-	} else {
-		fmt.Println(snapshotId)
-	}
+	// snapshotId, err := usecase.TriggerFullStockCrawl()
+	// if err != nil {
+	// 	fmt.Println("failed")
+	// } else {
+	// 	fmt.Println(snapshotId)
+	// }
+
+	snapshot, _ := usecase.GetProcessStatus("s_mc4r3u432je0vzrco1")
+	fmt.Println(snapshot.String())
 }
