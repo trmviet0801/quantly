@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/trmviet0801/quantly/quantly-crawling-serivce/models"
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/utils"
 )
 
@@ -43,17 +44,24 @@ func extractData[T any](response *http.Response) (T, error) {
 		return result, err
 	}
 
-	jsonBody, isOk := utils.WrapJSONObjectAsArray(body)
-	if !isOk {
-		err := fmt.Errorf("can not format response")
-		utils.OnError(fmt.Errorf("can not format response"))
-		return result, err
+	switch interface{}(result).(type) {
+	case []models.Stock:
+		jsonString, isOk := utils.WrapJSONObjectAsArray(body)
+
+		if !isOk {
+			err := fmt.Errorf("can not format response body")
+			return result, err
+		}
+		err := json.Unmarshal([]byte(jsonString), &result)
+		if err != nil {
+			return result, err
+		}
+	default:
+		err = json.Unmarshal(body, &result)
+		if err != nil {
+			return result, err
+		}
 	}
 
-	err = json.Unmarshal([]byte(jsonBody), &result)
-	if err != nil {
-		utils.OnError(err)
-		return result, err
-	}
 	return result, nil
 }

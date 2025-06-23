@@ -1,7 +1,6 @@
 package quantlycrawlingservice
 
 import (
-	"fmt"
 	"os"
 	"testing"
 
@@ -11,7 +10,6 @@ import (
 func Test(t *testing.T) {
 	result, err := usecase.CrawlStockInfo("s_mc6d8baz2dz62ln10s")
 	if err != nil {
-		fmt.Println("huhu")
 		panic("huhu")
 	}
 	for _, stock := range result {
