@@ -6,6 +6,7 @@ import (
 
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/models"
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/network"
+	"github.com/trmviet0801/quantly/quantly-crawling-serivce/utils"
 )
 
 func GetProcessStatus(snapshotId string) (*models.Snapshot, error) {
@@ -26,4 +27,25 @@ func GetProcessStatus(snapshotId string) (*models.Snapshot, error) {
 	}
 
 	return &responseBody, nil
+}
+
+func GetAllSnapshotOverview() ([]*models.SnapshotOverview, error) {
+	url := fmt.Sprintf("%s%s", os.Getenv("BRIGHT_DATA_BASE_URL"), os.Getenv("BRIGHT_DATA_GET_ALL_SNAPSHOTS_OVERVIEW_SUB_URL"))
+	headers := map[string]string{
+		"Authorization": fmt.Sprintf("Bearer %s", os.Getenv("BRIGHT_DATA_BEARER_TOKEN")),
+	}
+
+	response, err := network.SafeCall(url, "GET", headers, nil)
+	if err != nil {
+		utils.OnError(fmt.Errorf("can not get all snapshots overview: url %s | err: %w", url, err))
+		return nil, err
+	}
+
+	body, err := network.Result[[]models.SnapshotOverview](response)
+	if err != nil {
+		utils.OnError(fmt.Errorf("can not unmarshall snapshots overview: url %s | err: %w", url, err))
+		return nil, err
+	}
+
+	return utils.ToPointerArray(body), nil
 }
