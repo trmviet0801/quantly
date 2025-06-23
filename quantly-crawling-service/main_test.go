@@ -1,11 +1,12 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"testing"
 
 	"github.com/joho/godotenv"
-	"github.com/trmviet0801/quantly/quantly-crawling-serivce/usecase"
+	"github.com/trmviet0801/quantly/quantly-crawling-serivce/db"
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/utils"
 )
 
@@ -31,6 +32,19 @@ func Test(t *testing.T) {
 	// 	fmt.Println(snapshotId)
 	// }
 
-	snapshot, _ := usecase.GetProcessStatus("s_mc4r3u432je0vzrco1")
-	fmt.Println(snapshot.String())
+	// snapshot, _ := usecase.GetProcessStatus("s_mc4r3u432je0vzrco1")
+	// fmt.Println(snapshot.String())
+
+	ctx := context.Background()
+
+	db := db.Database{}
+	rdb := db.GetDatabase()
+
+	rdb.Set(ctx, "foo", "bar", 0)
+	result, err := rdb.Get(ctx, "foo").Result()
+	if err != nil {
+		fmt.Println("error")
+	} else {
+		fmt.Println(result)
+	}
 }
