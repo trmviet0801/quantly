@@ -26,7 +26,8 @@ func Result[T any](response *http.Response) (T, error) {
 		return result, nil
 	default:
 		fmt.Println(response.Request.URL)
-		err := fmt.Errorf("request failed with status code %d", response.StatusCode)
+		body, _ := io.ReadAll(response.Body)
+		err := fmt.Errorf("request failed with status code %d msg : %s", response.StatusCode, string(body))
 		utils.OnError(err)
 		return result, err
 	}
