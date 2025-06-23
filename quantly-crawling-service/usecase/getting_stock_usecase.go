@@ -49,3 +49,16 @@ func GetAllSnapshotOverview() ([]*models.SnapshotOverview, error) {
 
 	return utils.ToPointerArray(body), nil
 }
+
+// Returns (nil, nil) if dataset is empty
+func GetLatestSnapshotOverview() (*models.SnapshotOverview, error) {
+	snapshotoverviews, err := GetAllSnapshotOverview()
+	if err != nil {
+		return nil, err
+	}
+
+	if len(snapshotoverviews) == 0 {
+		return nil, nil
+	}
+	return snapshotoverviews[0], nil
+}
