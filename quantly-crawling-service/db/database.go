@@ -32,9 +32,15 @@ func (d *Database) Init() error {
 	return d.SetUpIndexes()
 }
 
+// Create all pre-definded indexes
 func (d *Database) SetUpIndexes() error {
 	if d.DB != nil {
 		err := SetUpSnapshotOverviewIndex(d.DB)
+		if err != nil {
+			return err
+		}
+
+		err = SetUpStockIndex(d.DB)
 		if err != nil {
 			return err
 		}

@@ -8,6 +8,8 @@ import (
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/utils"
 )
 
+// IdxName: idx:snapshotOverviews
+// Columns: [id, dataset_id, status]
 func SetUpSnapshotOverviewIndex(rdb *redis.Client) error {
 	ctx := context.Background()
 	_, err := rdb.FTCreate(
@@ -31,6 +33,34 @@ func SetUpSnapshotOverviewIndex(rdb *redis.Client) error {
 			FieldName: "$.status",
 			As:        "status",
 			FieldType: redis.SearchFieldTypeTag,
+		},
+	).Result()
+
+	if err != nil {
+		utils.OnError(fmt.Errorf("can not create redis indexes: %w", err))
+		return err
+	}
+	return nil
+}
+
+func SetUpStockIndex(rdb *redis.Client) error {
+	ctx := context.Background()
+	_, err := rdb.FTCreate(
+		ctx,
+		"idx:stocks",
+		&redis.FTCreateOptions{
+			OnJSON: true,
+			Prefix: []interface{}{"stock:"},
+		},
+		&redis.FieldSchema{
+			FieldName: "$.company_id",
+			As:        "company_id",
+			FieldType: redis.SearchFieldTypeText,
+		},
+		&redis.FieldSchema{
+			FieldName: "$.name",
+			As:        "name",
+			FieldType: redis.SearchFieldTypeText,
 		},
 	).Result()
 
