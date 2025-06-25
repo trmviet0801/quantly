@@ -43,6 +43,8 @@ func SetUpSnapshotOverviewIndex(rdb *redis.Client) error {
 	return nil
 }
 
+// IdxName = idx:stocks
+// Columns: [company_id, name]
 func SetUpStockIndex(rdb *redis.Client) error {
 	ctx := context.Background()
 	_, err := rdb.FTCreate(
@@ -60,6 +62,36 @@ func SetUpStockIndex(rdb *redis.Client) error {
 		&redis.FieldSchema{
 			FieldName: "$.name",
 			As:        "name",
+			FieldType: redis.SearchFieldTypeText,
+		},
+	).Result()
+
+	if err != nil {
+		utils.OnError(fmt.Errorf("can not create redis indexes: %w", err))
+		return err
+	}
+	return nil
+}
+
+// IdxName = idx:snapshot
+// Columns: [status, snapshot_id]
+func SetUpSnapshotIndex(rdb *redis.Client) error {
+	ctx := context.Background()
+	_, err := rdb.FTCreate(
+		ctx,
+		"idx:snapshot",
+		&redis.FTCreateOptions{
+			OnJSON: true,
+			Prefix: []interface{}{"snapshot:"},
+		},
+		&redis.FieldSchema{
+			FieldName: "$.status",
+			As:        "status",
+			FieldType: redis.SearchFieldTypeText,
+		},
+		&redis.FieldSchema{
+			FieldName: "$.snapshot_id",
+			As:        "snapshot_id",
 			FieldType: redis.SearchFieldTypeText,
 		},
 	).Result()

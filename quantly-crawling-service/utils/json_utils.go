@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"encoding/json"
+
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/models"
 )
 
@@ -41,4 +43,23 @@ func WrapJSONObjectAsArray(data []byte) (string, bool) {
 	result = result[:len(result)-3]
 	result += "]"
 	return result, true
+}
+
+// Convert fields (map[string]interface{} to Struct)
+func MapToStruct[T any](fields map[string]string) (T, error) {
+	var result T
+
+	jsonText, err := json.Marshal(fields)
+	if err != nil {
+		OnError(err)
+		return result, err
+	}
+
+	err = json.Unmarshal(jsonText, &result)
+	if err != nil {
+		OnError(err)
+		return result, err
+	}
+
+	return result, nil
 }

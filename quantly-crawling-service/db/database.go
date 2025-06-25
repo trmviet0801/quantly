@@ -44,6 +44,11 @@ func (d *Database) SetUpIndexes() error {
 		if err != nil {
 			return err
 		}
+
+		err = SetUpSnapshotIndex(d.DB)
+		if err != nil {
+			return err
+		}
 		return nil
 	}
 	err := fmt.Errorf("can not create indexes: DB is nil")
