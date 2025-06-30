@@ -38,6 +38,7 @@ func GetCrawledData(snapshotId string) ([]*models.Stock, error) {
 }
 
 // Trigger crawling process for all stocks on BrightData
+// Load stocks from local files -> Create POST request to BrightData -> Response snapshotId
 func TriggerFullStockCrawl() (*dto.CrawlRequestResponseDto, error) {
 	stockIds, err := data.GetAllUsStockId(os.Getenv("SnP500_URL"))
 	if err != nil {

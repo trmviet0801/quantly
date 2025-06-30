@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/joho/godotenv"
@@ -47,12 +46,30 @@ func Test(t *testing.T) {
 	// 	fmt.Println(result)
 	// }
 
-	snapshotOverviews, err := usecase.GetAllSnapshotOverview()
-	if err != nil {
-		fmt.Println("failed")
-	} else {
-		for _, snapshot := range snapshotOverviews {
-			fmt.Println(snapshot.String())
-		}
-	}
+	// snapshotOverviews, err := usecase.GetAllSnapshotOverview()
+	// if err != nil {
+	// 	fmt.Println("failed")
+	// } else {
+	// 	for _, snapshot := range snapshotOverviews {
+	// 		fmt.Println(snapshot.String())
+	// 	}
+	// }
+
+	// snapshotOverviews, err := usecase.GetSnapshotOverviews()
+	// if err != nil {
+	// 	fmt.Printf("err")
+	// } else {
+	// 	runningSnapshots, err := usecase.GetRunningSnapshot(snapshotOverviews)
+	// 	if err != nil {
+	// 		fmt.Println(err.Error())
+	// 	} else {
+	// 		totalRunning := len(runningSnapshots)
+	// 		fmt.Printf("Total Running Snapshot: %d\n", totalRunning)
+	// 		for _, snapshot := range runningSnapshots {
+	// 			fmt.Println(snapshot.String())
+	// 		}
+	// 	}
+	// }
+
+	usecase.CrawlManager()
 }

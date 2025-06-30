@@ -15,12 +15,14 @@ func (c *CrawlRequestPostDto) ConstructBody(stockIds []string) {
 	c.ConstructInputUrl(stockIds)
 }
 
+// Add URL for crawling
 func (c *CrawlRequestPostDto) ConstructInputUrl(stockIds []string) {
 	for _, stockId := range stockIds {
 		c.Input = append(c.Input, InputURL{URL: fmt.Sprintf("%s%s", os.Getenv("FINANCE_YAHOO_URL"), stockId)})
 	}
 }
 
+// Add pre-definded fields that will be crawled by BrightData on Finance.yahoo
 func (c *CrawlRequestPostDto) SetUpDefaultCustomFields() {
 	c.CustomOutputFields = []string{
 		"name",
