@@ -81,3 +81,19 @@ func FindSnapshotOverviewById(snapshotId string, rdb *redis.Client) ([]*models.S
 	}
 	return snapshotOverviews, nil
 }
+
+func FindSnapshotById(snapshotId string, rdb *redis.Client) ([]*models.Snapshot, error) {
+	ctx := context.Background()
+
+	redisSnapshot, err := rdb.FTSearch(ctx, "idx:snapshot", fmt.Sprintf("@snapshot_id:{%s}", snapshotId)).Result()
+	if err != nil {
+		utils.OnError(err)
+		return nil, err
+	}
+
+	snapshots, err := utils.UnmarshallRedisReturn[models.Snapshot](&redisSnapshot)
+	if err != nil {
+		return nil, err
+	}
+	return snapshots, nil
+}
