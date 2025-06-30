@@ -23,7 +23,7 @@ func PostStockToRedisDB(stock *models.Stock, rdb *redis.Client) error {
 	return nil
 }
 
-func PostSnapShotToRedisDB(snapshotOverview *models.SnapshotOverview, rdb *redis.Client) error {
+func PostSnapshotOverviewToRedisDB(snapshotOverview *models.SnapshotOverview, rdb *redis.Client) error {
 	key := fmt.Sprintf("snapshotOverviews:%s", snapshotOverview.Id)
 	ctx := context.Background()
 
@@ -64,4 +64,20 @@ func FindStocksByCompanyID(companyId string, rdb *redis.Client) ([]*models.Stock
 	}
 
 	return stocks, nil
+}
+
+func FindSnapshotOverviewById(snapshotId string, rdb *redis.Client) ([]*models.SnapshotOverview, error) {
+	ctx := context.Background()
+
+	redisSnapshotOverviews, err := rdb.FTSearch(ctx, "idx:snapshotOverviews", fmt.Sprintf("@id:{%s}", snapshotId)).Result()
+	if err != nil {
+		utils.OnError(err)
+		return nil, err
+	}
+
+	snapshotOverviews, err := utils.UnmarshallRedisReturn[models.SnapshotOverview](&redisSnapshotOverviews)
+	if err != nil {
+		return nil, err
+	}
+	return snapshotOverviews, nil
 }
