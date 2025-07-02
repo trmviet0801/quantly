@@ -23,8 +23,10 @@ func PostStockToRedisDB(stock *models.Stock, rdb *redis.Client) error {
 	return nil
 }
 
+// Post latest version of snapshot_overview to Redis
+// Only 1 version of snapshot_overview in Redis (latest version)
 func PostSnapshotOverviewToRedisDB(snapshotOverview *models.SnapshotOverview, rdb *redis.Client) error {
-	key := fmt.Sprintf("snapshotOverviews:%s", snapshotOverview.Id)
+	key := "snapshotOverviews:latest"
 	ctx := context.Background()
 
 	_, err := rdb.JSONSet(ctx, key, "$", snapshotOverview).Result()
@@ -66,16 +68,21 @@ func FindStocksByCompanyID(companyId string, rdb *redis.Client) ([]*models.Stock
 	return stocks, nil
 }
 
-func FindSnapshotOverviewById(snapshotId string, rdb *redis.Client) ([]*models.SnapshotOverview, error) {
+// Get by key: snapshotOverviews:latest from Redis
+func GetLatestSnapshot(rdb *redis.Client) ([]*models.SnapshotOverview, error) {
 	ctx := context.Background()
 
-	redisSnapshotOverviews, err := rdb.FTSearch(ctx, "idx:snapshotOverviews", fmt.Sprintf("@id:{%s}", snapshotId)).Result()
+	redisSnapshotOverviews, err := rdb.JSONGet(ctx, "snapshotOverviews:latest", "$").Result()
 	if err != nil {
 		utils.OnError(err)
 		return nil, err
 	}
 
-	snapshotOverviews, err := utils.UnmarshallRedisReturn[models.SnapshotOverview](&redisSnapshotOverviews)
+	if redisSnapshotOverviews == "" {
+		return nil, redis.Nil
+	}
+
+	snapshotOverviews, err := utils.UnmarshallRedisReturnString[models.SnapshotOverview](redisSnapshotOverviews)
 	if err != nil {
 		return nil, err
 	}

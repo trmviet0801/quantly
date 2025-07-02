@@ -14,6 +14,10 @@ func (so *SnapshotOverview) IsRunning() bool {
 	return so.Status == "running"
 }
 
+func (so *SnapshotOverview) IsReady() bool {
+	return so.Status == "ready"
+}
+
 func (s SnapshotOverview) String() string {
 	return fmt.Sprintf(
 		"SnapshotOverview{Id: %q, DatasetId: %q, Status: %q, Created: %q}",

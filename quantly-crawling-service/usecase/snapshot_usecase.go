@@ -4,11 +4,13 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/redis/go-redis/v9"
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/models"
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/network"
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/utils"
 )
 
+// Get all snapshot_overviews on BrightData
 func GetSnapshotOverviews() ([]*models.SnapshotOverview, error) {
 	url := fmt.Sprintf("%s%s", os.Getenv("BRIGHT_DATA_BASE_URL"), os.Getenv("BRIGHT_DATA_GET_ALL_SNAPSHOTS_OVERVIEW_SUB_URL"))
 
@@ -42,4 +44,40 @@ func GetRunningSnapshot(snapshotOverviews []*models.SnapshotOverview) ([]*models
 		}
 	}
 	return result, nil
+}
+
+func GetReadySnapshotOverviews(snapshotOverviews []*models.SnapshotOverview) ([]*models.SnapshotOverview, error) {
+	if len(snapshotOverviews) == 0 {
+		err := fmt.Errorf("snapshotoverviews is empty")
+		utils.OnError(err)
+		return nil, err
+	}
+	var result []*models.SnapshotOverview
+	for _, snapshot := range snapshotOverviews {
+		if snapshot.IsReady() {
+			result = append(result, snapshot)
+		}
+	}
+	return result, nil
+}
+
+// Get latest snapshot_overview in BrightData
+func GetLatestReadySnapshotOverviewInBD(conn *redis.Client) (*models.SnapshotOverview, error) {
+	snapshotOverviews, err := GetSnapshotOverviews()
+	if err != nil {
+		return nil, err
+	}
+
+	// Sorted by timestamp by default from BrightData | DESC order
+	readySnapshotOverviews, err := GetReadySnapshotOverviews(snapshotOverviews)
+	if err != nil {
+		return nil, err
+	}
+	if len(readySnapshotOverviews) == 0 {
+		err := fmt.Errorf("no ready snapshot")
+		utils.OnError(err)
+		return nil, err
+	}
+
+	return readySnapshotOverviews[0], nil
 }

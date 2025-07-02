@@ -14,10 +14,7 @@ type Database struct {
 
 func (d *Database) GetDatabase() (*redis.Client, error) {
 	if d.DB == nil {
-		err := d.Init()
-		if err != nil {
-			return nil, err
-		}
+		d.Init()
 	}
 	return d.DB, nil
 }

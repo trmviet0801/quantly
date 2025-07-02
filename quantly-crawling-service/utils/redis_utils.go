@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/redis/go-redis/v9"
@@ -20,4 +21,16 @@ func UnmarshallRedisReturn[T any](r *redis.FTSearchResult) ([]*T, error) {
 		result = append(result, &item)
 	}
 	return result, nil
+}
+
+// Convert data queried from Redis (in String) to object
+func UnmarshallRedisReturnString[T any](value string) ([]*T, error) {
+	var result []T
+	err := json.Unmarshal([]byte(value), &result)
+	if err != nil {
+		fmt.Println("here")
+		OnError(err)
+		return nil, err
+	}
+	return ToPointerArray(result), nil
 }
