@@ -26,7 +26,7 @@ func PostStockToRedisDB(stock *models.Stock, rdb *redis.Client) error {
 // Post latest version of snapshot_overview to Redis
 // Only 1 version of snapshot_overview in Redis (latest version)
 func PostSnapshotOverviewToRedisDB(snapshotOverview *models.SnapshotOverview, rdb *redis.Client) error {
-	key := "snapshotOverviews:latest"
+	key := "snapshot_overview:latest"
 	ctx := context.Background()
 
 	_, err := rdb.JSONSet(ctx, key, "$", snapshotOverview).Result()
@@ -72,7 +72,7 @@ func FindStocksByCompanyID(companyId string, rdb *redis.Client) ([]*models.Stock
 func GetLatestSnapshot(rdb *redis.Client) ([]*models.SnapshotOverview, error) {
 	ctx := context.Background()
 
-	redisSnapshotOverviews, err := rdb.JSONGet(ctx, "snapshotOverviews:latest", "$").Result()
+	redisSnapshotOverviews, err := rdb.JSONGet(ctx, "snapshot_overview:latest", "$").Result()
 	if err != nil {
 		utils.OnError(err)
 		return nil, err

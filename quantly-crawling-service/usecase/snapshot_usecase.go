@@ -8,6 +8,7 @@ import (
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/models"
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/network"
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/utils"
+	"go.uber.org/zap"
 )
 
 // Get all snapshot_overviews on BrightData
@@ -62,7 +63,7 @@ func GetReadySnapshotOverviews(snapshotOverviews []*models.SnapshotOverview) ([]
 }
 
 // Get latest snapshot_overview in BrightData
-func GetLatestReadySnapshotOverviewInBD(conn *redis.Client) (*models.SnapshotOverview, error) {
+func GetLatestReadySnapshotOverviewOfFullStocksInBD(conn *redis.Client) (*models.SnapshotOverview, error) {
 	snapshotOverviews, err := GetSnapshotOverviews()
 	if err != nil {
 		return nil, err
@@ -79,5 +80,13 @@ func GetLatestReadySnapshotOverviewInBD(conn *redis.Client) (*models.SnapshotOve
 		return nil, err
 	}
 
-	return readySnapshotOverviews[0], nil
+	for _, snapshotOverview := range readySnapshotOverviews {
+		if snapshotOverview.DatasetSize > 1 {
+			return snapshotOverview, nil
+		}
+	}
+
+	err = fmt.Errorf("no ready snapshot overview for full stocks")
+	zap.L().Error(err.Error())
+	return nil, err
 }

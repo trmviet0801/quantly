@@ -3,10 +3,11 @@ package models
 import "fmt"
 
 type SnapshotOverview struct {
-	Id        string `json:"id"`
-	DatasetId string `json:"dataset_id"`
-	Status    string `json:"status"`
-	Created   string `json:"created"`
+	Id          string `json:"id"`
+	DatasetId   string `json:"dataset_id"`
+	Status      string `json:"status"`
+	DatasetSize int    `json:"dataset_size"`
+	Created     string `json:"created"`
 }
 
 // If not running -> ready

@@ -20,6 +20,7 @@ func CrawlManager() {
 		fmt.Printf("Crawl Full Stocks At: %s", t)
 		err := AutoCrawlAllStocks()
 		if err != nil {
+			zap.L().Error("crawling error: will retry")
 			RetryCrawlAllStocks(5)
 		}
 
@@ -45,7 +46,6 @@ func SyncLatestCrawlingVersion() error {
 	if err != nil {
 		// No existed data in Redis
 		if err == redis.Nil {
-
 			err = PostLatestSnapshotOverview(conn)
 			if err != nil {
 				return err
@@ -55,7 +55,7 @@ func SyncLatestCrawlingVersion() error {
 		return err
 	}
 
-	latestSnapshotOverview, err := GetLatestReadySnapshotOverviewInBD(conn)
+	latestSnapshotOverview, err := GetLatestReadySnapshotOverviewOfFullStocksInBD(conn)
 	if err != nil {
 		return err
 	}
@@ -73,7 +73,7 @@ func SyncLatestCrawlingVersion() error {
 
 // Get latest snapshot_overview from BrightData -> Post to Redis
 func PostLatestSnapshotOverview(conn *redis.Client) error {
-	latestSnapshotOverview, err := GetLatestReadySnapshotOverviewInBD(conn)
+	latestSnapshotOverview, err := GetLatestReadySnapshotOverviewOfFullStocksInBD(conn)
 	if err != nil {
 		return err
 	}
