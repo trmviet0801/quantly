@@ -3,10 +3,10 @@ package usecase
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"github.com/redis/go-redis/v9"
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/models"
+	"github.com/trmviet0801/quantly/quantly-crawling-serivce/repository"
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/utils"
 )
 
@@ -16,9 +16,9 @@ func PostStockToRedisDB(stock *models.Stock, rdb *redis.Client) error {
 	key := fmt.Sprintf("stock:%s", stock.CompanyID)
 	ctx := context.Background()
 
-	_, err := rdb.JSONSet(ctx, key, "$", stock).Result()
-	rdb.Expire(ctx, key, 1*time.Hour)
+	err := repository.PostDataToRedisDB(rdb, stock, key, ctx)
 	if err != nil {
+		err = fmt.Errorf("can not post stock to redis db: %s", err.Error())
 		utils.OnError(err)
 		return err
 	}
@@ -31,9 +31,9 @@ func PostSnapshotOverviewToRedisDB(snapshotOverview *models.SnapshotOverview, rd
 	key := "snapshot_overview:latest"
 	ctx := context.Background()
 
-	_, err := rdb.JSONSet(ctx, key, "$", snapshotOverview).Result()
-	rdb.Expire(ctx, key, 1*time.Hour)
+	err := repository.PostDataToRedisDB(rdb, snapshotOverview, key, ctx)
 	if err != nil {
+		err = fmt.Errorf("can not post snapshot overview to redis db: %s", err.Error())
 		utils.OnError(err)
 		return err
 	}
@@ -44,9 +44,9 @@ func PostSnapshotToRedisDB(snapshot *models.Snapshot, rdb *redis.Client) error {
 	key := fmt.Sprintf("snapshot:%s", snapshot.SnapshotID)
 	ctx := context.Background()
 
-	_, err := rdb.JSONSet(ctx, key, "$", snapshot).Result()
-	rdb.Expire(ctx, key, 1*time.Hour)
+	err := repository.PostDataToRedisDB(rdb, snapshot, key, ctx)
 	if err != nil {
+		err = fmt.Errorf("can not post snapshot to redis db: %s", err.Error())
 		utils.OnError(err)
 		return err
 	}

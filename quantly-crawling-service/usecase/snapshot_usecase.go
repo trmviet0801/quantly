@@ -110,3 +110,18 @@ func GetReadySnapshotOverviewOfSingleStock(conn *redis.Client) ([]*models.Snapsh
 
 	return result, nil
 }
+
+// Get latest snapshot_overview from BrightData -> Post to Redis
+func PostLatestSnapshotOverview(conn *redis.Client) error {
+	latestSnapshotOverview, err := GetLatestReadySnapshotOverviewOfFullStocksInBD(conn)
+	if err != nil {
+		return err
+	}
+
+	err = PostSnapshotOverviewToRedisDB(latestSnapshotOverview, conn)
+	if err != nil {
+		return err
+	}
+	zap.L().Info("Redis Insertion Successfully", zap.String("Data", "Latest Snapshot Overview"))
+	return nil
+}
