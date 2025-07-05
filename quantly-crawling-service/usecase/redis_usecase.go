@@ -10,6 +10,8 @@ import (
 	"github.com/trmviet0801/quantly/quantly-crawling-serivce/utils"
 )
 
+// Insert stock to Redis DB, overwrite if existed
+// Key: stock:[symbol]
 func PostStockToRedisDB(stock *models.Stock, rdb *redis.Client) error {
 	key := fmt.Sprintf("stock:%s", stock.CompanyID)
 	ctx := context.Background()

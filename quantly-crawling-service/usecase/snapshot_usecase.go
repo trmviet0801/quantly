@@ -90,3 +90,23 @@ func GetLatestReadySnapshotOverviewOfFullStocksInBD(conn *redis.Client) (*models
 	zap.L().Error(err.Error())
 	return nil, err
 }
+
+// Get all ready snapshot overviews of single stock
+// Return empty list if no snapshot overview of single stock
+func GetReadySnapshotOverviewOfSingleStock(conn *redis.Client) ([]*models.SnapshotOverview, error) {
+	snapshotOverviews, err := GetSnapshotOverviews()
+	if err != nil {
+		err = fmt.Errorf("can not get all snapshot overviews from BrightData: %s", err.Error())
+		utils.OnError(err)
+		return nil, err
+	}
+
+	var result []*models.SnapshotOverview
+	for _, snapshotOverview := range snapshotOverviews {
+		if snapshotOverview.IsRunning() {
+			result = append(result, snapshotOverview)
+		}
+	}
+
+	return result, nil
+}
