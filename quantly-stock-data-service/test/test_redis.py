@@ -1,6 +1,7 @@
 import pytest
 from db.redis_conn import get_redis_instance
 from repo.redis_repo import  redis_post_object, redis_get_object
+from usecase.fetch_stock import fetch_stock
 from models.stock import Stock
 import redis.commands.json.path as Path
 
