@@ -29,5 +29,6 @@ def ticker_to_stock(symbol: str, ticker: yf.Ticker) -> Stock | None:
         website=info.get("website"),
         industry=info.get("industry"),
         sector=info.get("sector"),
-        symbol=symbol.upper()
+        symbol=symbol.upper(),
+        currenPrice=info.get("currentPrice"),
     )

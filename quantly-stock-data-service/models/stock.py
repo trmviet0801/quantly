@@ -29,4 +29,5 @@ class Stock(SQLModel, table=True, namespace="stocks"):
     website: Optional[str] = None
     industry: Optional[str] = None
     sector: Optional[str] = None
+    currenPrice: Optional[float] = None
     symbol: str = Field(primary_key=True)
