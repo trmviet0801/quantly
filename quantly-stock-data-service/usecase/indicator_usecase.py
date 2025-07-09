@@ -154,3 +154,22 @@ def cal_stochastic_oscillator(
             f"Cannot calculate Stochastic Oscillator for {stock} | range={fetch_range} | interval={interval} | %K={period_k} | %D={period_d} | error: {e}"
         )
         return None
+
+# Momentum - Price difference over a lookback period
+def cal_momentum(stock: str, ticker: yf.Ticker, fetch_range: str, momentum_period: int, interval: str) -> pd.Series | None:
+    try:
+        history = ticker.history(period=fetch_range, interval=interval)
+        if history.empty or len(history) <= momentum_period:
+            raise Exception("Not enough data to calculate Momentum")
+
+        close_prices = history["Close"]
+        momentum = close_prices - close_prices.shift(momentum_period)
+
+        return momentum
+
+    except Exception as e:
+        logger = get_logger()
+        logger.error(
+            f"Cannot calculate Momentum for {stock} | range={fetch_range} | interval={interval} | period={momentum_period} | error: {e}"
+        )
+        return None

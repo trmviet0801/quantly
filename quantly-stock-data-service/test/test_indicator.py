@@ -60,3 +60,17 @@ def test_stochastic_oscillator():
         print("Stochastic %D:\n", percent_d.tail())
     else:
         print("Stochastic Oscillator calculation failed.")
+
+def test_momentum():
+    ticker = yf.Ticker('NVDA')
+    result = cal.cal_momentum(
+        stock='NVDA',
+        ticker=ticker,
+        fetch_range='1mo',
+        momentum_period=10,
+        interval='1d'
+    )
+    if result is not None:
+        print("Momentum:\n", result.tail())
+    else:
+        print("Momentum calculation failed.")
