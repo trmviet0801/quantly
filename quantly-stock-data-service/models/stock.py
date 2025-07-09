@@ -1,6 +1,8 @@
 import time
 from dataclasses import dataclass
 from typing import Optional
+
+from pydantic import PrivateAttr
 from sqlmodel import SQLModel, Field
 from datetime import datetime
 
