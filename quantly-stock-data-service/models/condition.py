@@ -1,3 +1,4 @@
+import uuid
 from sqlmodel import SQLModel, Field, Relationship
 from typing import Optional
 from uuid import UUID
@@ -8,7 +9,7 @@ from models.trading_model import TradingModel
 class Condition(SQLModel, table=True):
     __tablename__ = "conditions"
 
-    condition_id: UUID = Field(primary_key=True, index=True)
+    condition_id: UUID = Field(primary_key=True, index=True, default=uuid.uuid4)
     trading_model_id: UUID = Field(foreign_key="trading_models.trading_model_id")
 
     indicator: str = Field(max_length=50)
