@@ -3,10 +3,6 @@ import yfinance as yf
 from pandas import Series
 from logger.structlog_config import get_logger
 
-import utils.indicator_utils as utils
-
-# Simple moving average.
-# Average of closing price
 # Interval     -> Recommended Minimum Period
 # -------------------------------------------
 # '1m'         -> '1d' to '7d'
@@ -14,6 +10,9 @@ import utils.indicator_utils as utils
 # '1d'         -> '1mo+'
 # '1wk'        -> '3mo+'
 # '1mo'        -> '6mo+'
+
+# Simple moving average.
+# Average of closing price
 def cal_sma(stock: str, ticker: yf.Ticker, fetch_range: str, sma_window: int, interval: str) -> Series | None:
     try:
         history = ticker.history(period=fetch_range, interval=interval)

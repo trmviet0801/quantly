@@ -1,16 +1,18 @@
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, Relationship
 from typing import Optional
+from uuid import UUID
+
+from models.condition import Condition
 
 
 class TradingModel(SQLModel, table=True):
     __tablename__ = "trading_models"
 
-    trading_model_id: str = Field(primary_key=True, max_length=36)
+    trading_model_id: UUID = Field(primary_key=True, index=True)
     name: Optional[str] = Field(default=None, max_length=50)
-    description: Optional[str] = None
+    description: Optional[str] = Field(default=None)
     status: Optional[str] = Field(default=None, max_length=36)
-    account_id: Optional[str] = Field(default=None, foreign_key="accounts.account_id", max_length=36)
+    account_id: UUID = Field(foreign_key="accounts.account_id")
+    action: Optional[str] = Field(default=None, max_length=10)
 
-    formula: Optional[str] = None
-    entry_condition: Optional[str] = None
-    exit_condition: Optional[str] = None
+    conditions: list[Condition] = Relationship(back_populates="trading_model")
