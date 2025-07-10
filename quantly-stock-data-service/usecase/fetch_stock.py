@@ -3,6 +3,7 @@ import yfinance as yf
 from models.stock import Stock
 from logger.structlog_config import get_logger
 from converters.stock_converter import ticker_to_stock
+from repo.mysql_repo import insert_data
 
 # Fetch single stock via symbol
 # Couldn't find stock -> returns NoneType
@@ -35,5 +36,5 @@ def fetch_stocks(symbols: list[str], batch: int = 200) -> list[Stock] | None:
         return result
     except Exception as e:
         logger = get_logger()
-        logger.error('can not get stocks data', exception=e)
+        logger.error('can not get stocks data', exception=str(e))
         return None

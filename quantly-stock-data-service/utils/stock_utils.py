@@ -1,5 +1,8 @@
 import pandas
 
+from models.stock import Stock
+
+
 def get_redis_key_of_stock(symbol: str) -> str:
     return "stock:" + symbol
 

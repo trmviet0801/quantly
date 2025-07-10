@@ -16,4 +16,4 @@ class TradingModel(SQLModel, table=True):
     account_id: UUID = Field(foreign_key="accounts.account_id")
     action: Optional[str] = Field(default=None, max_length=10)
 
-    conditions: list[Condition] = Relationship(back_populates="trading_model")
+    # conditions: list[Condition] = Relationship(back_populates="trading_model")

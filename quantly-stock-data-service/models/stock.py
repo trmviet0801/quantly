@@ -35,4 +35,4 @@ class Stock(SQLModel, table=True):
     currency: Optional[str] = Field(default=None, max_length=24)
     exchange: Optional[str] = Field(default=None, max_length=24)
 
-    updated_at: Optional[datetime] = Field(default=time.time())
+    updated_at: Optional[str] = Field(default=str(datetime.now()))
