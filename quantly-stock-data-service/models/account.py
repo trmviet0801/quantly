@@ -1,9 +1,11 @@
+import dataclasses
 import uuid
 
 from sqlmodel import SQLModel, Field
 from typing import Optional
 from datetime import datetime
 
+@dataclasses.dataclass
 class Account(SQLModel, table=True):
     __tablename__ = "accounts"
 
