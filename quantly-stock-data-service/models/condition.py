@@ -1,22 +1,19 @@
 import uuid
 
-from sqlalchemy import Column, Numeric
 from sqlmodel import SQLModel, Field, Relationship
-from typing import Optional
-from uuid import UUID
+from typing import Optional, TYPE_CHECKING
 
-# from models.trading_model import TradingModel
-
+if TYPE_CHECKING:
+    from .cond_model_index import CondModelIndex
 
 class Condition(SQLModel, table=True):
     __tablename__ = "conditions"
 
-    condition_id: UUID = Field(primary_key=True, index=True, default=uuid.uuid4)
-    trading_model_id: UUID = Field(foreign_key="trading_models.trading_model_id")
+    condition_id: str = Field(primary_key=True, index=True, default_factory=lambda : str(uuid.uuid4()))
 
     indicator: str = Field(max_length=50)
     operation: str = Field(max_length=10)
-    value: float = None
+    value: Optional[float] = None
     period: int
 
     period_k: Optional[float] = None
@@ -24,5 +21,4 @@ class Condition(SQLModel, table=True):
     std_dev: Optional[float] = None
     band: Optional[str] = Field(default=None, max_length=20)
 
-    # Optional relationship back to TradingModel
-    # trading_model: Optional["TradingModel"] = Relationship(back_populates="conditions")
+    cond_model_indices: list["CondModelIndex"] = Relationship(back_populates="condition")

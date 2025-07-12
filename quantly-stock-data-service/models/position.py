@@ -6,7 +6,7 @@ from datetime import datetime
 class Position(SQLModel, table=True):
     __tablename__ = "positions"
 
-    position_id: str = Field(primary_key=True, max_length=36, default=uuid.uuid4)
+    position_id: str = Field(primary_key=True, max_length=36, default_factory=lambda : str(uuid.uuid4()))
     symbol: str = Field(foreign_key="stocks.symbol", max_length=10)
     account_id: str = Field(foreign_key="accounts.account_id", max_length=36)
 
