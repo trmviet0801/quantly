@@ -12,7 +12,15 @@ def redis_post_object(data: T, key: str, redis_conn: redis.Redis) -> bool:
         if not is_dataclass(data):
             raise TypeError('Provided data is not a dataclass')
 
+        if redis_conn is None:
+            raise ValueError("Redis connection is None")
+
         data_dict = asdict(data)
+
+        for k, v in data_dict.items():
+            if isinstance(v, set):
+                data_dict[k] = list(v)
+
         redis_conn.json().set(key, "$", data_dict)
         return True
     except Exception as e:
@@ -23,6 +31,9 @@ def redis_post_object(data: T, key: str, redis_conn: redis.Redis) -> bool:
 # Handle response from Redis with data type = [list, dict]
 def redis_get_object(key: str, cls: Type[T], redis_conn: redis.Redis) -> T | None:
     try:
+        if redis_conn is None:
+            raise ValueError("Redis connection is None")
+
         json_data = redis_conn.json().get(key)
         if isinstance(json_data, list) and len(json_data) > 0:
             obj_data = json_data[0]
